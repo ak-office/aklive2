@@ -1,0 +1,21 @@
+.footer{
+    width: 100%;
+    text-align: center;
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    bottom: 0%;
+    position: bottom;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.footer a{
+    text-decoration: none;
+    color: orangered;
+}
+
+@media only screen and (max-width: 766px) {
+  
+    .footer {
+        font-size: 15px;
+    }
+    }

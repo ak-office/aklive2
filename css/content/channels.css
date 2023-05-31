@@ -1,0 +1,64 @@
+#channels {
+    margin-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+#channels .card{
+    border: 2px solid black;
+    border-radius: 0px;
+    width: 100%;
+    margin-top: 1.5rem;
+    height:auto;
+
+}
+
+
+#channels .card img{
+    height: auto;
+}
+
+#channels .info {
+    background-color: black;
+    height: 65px;
+    padding-top: 1rem;
+    text-align: center;
+    bottom: 0%;
+    color: white;
+   font-weight: bold;
+}
+
+#channels .card:hover .info {
+  /* From https://css.glass */
+background: rgba(91, 91, 91, 0.2);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+transition: .1s;
+color: black;
+
+}
+
+  
+
+#channels .channel_name{
+    color: white;
+}
+
+#channels span{
+   border-radius: 5px;
+   font-size: 14px;
+   padding-top: .1rem;
+   padding-bottom: .2rem;
+}
+
+
+#channels a{
+    text-decoration: none;
+    color: transparent;
+}
+
+#channels .card img {
+    width: 90%;
+    padding-left: 1rem;
+}
