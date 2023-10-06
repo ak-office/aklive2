@@ -1,0 +1,45 @@
+ jwplayer("jwplayerDiv").setup({
+
+    controls: true,
+    displaytitle: true,
+    fullscreen: "true",
+    primary: 'html5',
+    stretching: "exactfit",
+    autostart: false,
+    "logo":    {
+        "file": "/images/play-logo.png",
+        "hide": false,
+        "link": "https://aklive.bio.link",
+        "margin": "20",
+        "position": 'top-left'
+    },
+
+  "playlist": [
+      {
+        "sources": [
+          null,
+          {
+
+            "type": "dash",
+            "file": "https://bpprod5linear.akamaized.net/bpk-tv/irdeto_com_Channel_413/output/manifest.mpd",
+            "drm": {
+              "clearkey": {
+                "keyId": "a7641523ac8758e3b1e0df228719e145",
+                "key": "be802f7acaa55d074c7307124470c0e0"
+              }
+            },
+            "label": "0"
+          }
+        ],
+        image: "/images/play-cover.jpg",
+        title: "Star Sports Select 1 HD",
+        description: "Live Watching on AK LIVE"
+      }
+    ],
+
+    "image": "/images/play-cover.jpg"
+  }).on('ready', function () {
+    // Set poster image for video element to avoid black background for audio-only programs.
+    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+    if (video) video.setAttribute('poster', this.getConfig().image);
+  }); 
