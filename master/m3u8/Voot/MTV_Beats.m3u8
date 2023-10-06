@@ -1,0 +1,15 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-INDEPENDENT-SEGMENTS
+#EXT-X-STREAM-INF:BANDWIDTH=212000,AVERAGE-BANDWIDTH=193000,CODECS="mp4a.40.2,avc1.64000D",RESOLUTION=426x240
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_33637_eng=33600-video=148000.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=347000,AVERAGE-BANDWIDTH=316000,CODECS="mp4a.40.2,avc1.640015",RESOLUTION=512x288
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_98836_eng=98800-video=198800.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=650000,AVERAGE-BANDWIDTH=591000,CODECS="mp4a.40.2,avc1.640015",RESOLUTION=512x288
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_98836_eng=98800-video=458400.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=931000,AVERAGE-BANDWIDTH=847000,CODECS="mp4a.40.2,avc1.64001E",RESOLUTION=768x432
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_98836_eng=98800-video=699600.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=1122000,AVERAGE-BANDWIDTH=1020000,CODECS="mp4a.40.2,avc1.64001E",RESOLUTION=1047x576
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_98836_eng=98800-video=863200.m3u8
+#EXT-X-STREAM-INF:BANDWIDTH=1599000,AVERAGE-BANDWIDTH=1454000,CODECS="mp4a.40.2,avc1.64001E",RESOLUTION=1047x576
+https://prod-sports-north-gm.jiocinema.com/bpk-tv/MTV_Beats_voot_MOB/Fallback/MTV_Beats_voot_MOB-audio_98836_eng=98800-video=1272000.m3u8
