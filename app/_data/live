@@ -1,0 +1,44 @@
+[
+
+
+{"id":"Hin","title":" HINDI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2100323/hd_akamai_androidmob_avc_hin_indvsaus_odi03/master.m3u8"},
+
+{"id":"Eng","title":" ENGLISH ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2100299/hd_akamai_androidmob_avc_eng_indvsaus_odi03/master.m3u8"},
+
+{"id":"Bhoj","title":" BHOJPURI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099088/hd_akamai_androidmob_avc_bhoj_indvsaus_odi03/master.m3u8"},
+
+{"id":"Punj","title":" PUNJABI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099095/hd_akamai_androidmob_avc_punj_indvsaus_odi03/master.m3u8"},
+
+{"id":"Mar","title":" MARATHI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099094/hd_akamai_androidmob_avc_mar_indvsaus_odi03/master.m3u8"},
+
+{"id":"Guj","title":" GUJRATI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099018/hd_akamai_androidmob_avc_guj_indvsaus_odi03/master.m3u8"},
+
+{"id":"Ben","title":" BENGALI ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099023/hd_akamai_androidmob_avc_ben_indvsaus_odi03/master.m3u8"},
+
+{"id":"Tam","title":" TAMIL ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099011/hd_akamai_androidmob_avc_tam_indvsaus_odi03/master.m3u8"},
+
+{"id":"Tel","title":" TELUGU ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099012/hd_akamai_androidmob_avc_tel_indvsaus_odi03/master.m3u8"},
+
+{"id":"Kan","title":" KANNADA ","link":"https://prod-sports-hin-gm.jiocinema.com/hls/live/2099006/hd_akamai_androidmob_avc_kan_indvsaus_odi03/master.m3u8"},
+
+{"id":"Mal","title":" MALAYALAM ","link":"https://prod-sports-north-gm.jiocinema.com/hls/live/2099017/hd_akamai_androidmob_avc_mal_indvsaus_odi03/master.m3u8"},
+
+
+
+{"id":"Hin4K","title":" HINDI 4K ","link":"https://prod-ent-live-gm.jiocinema.com/hls/live/2100319/uhd_akamai_ctv_hevc_hin_indvsaus_odi03/master.m3u8"},
+
+{"id":"Eng4K","title":" ENGLISH 4K ","link":"https://prod-ent-live-gm.jiocinema.com/hls/live/2100304/uhd_akamai_ctv_hevc_eng_indvsaus_odi03/master.m3u8"},
+
+
+
+{"id":"Action_Cam","title":" Action CAM ","link":"https://prod-sports-multiangle-gm.jiocinema.com/hls/live/2099801/hd_akamai_iosmob_avc_cam02_indvsaus_odi03/master.m3u8"},
+
+{"id":"Batter_Cam","title":" Batter CAM ","link":"https://prod-sports-multiangle-gm.jiocinema.com/hls/live/2100297/hd_akamai_iosmob_avc_cam03_indvsaus_odi03/master.m3u8"},
+
+{"id":"Bowler_Cam","title":" Bowler CAM ","link":"https://prod-sports-multiangle-gm.jiocinema.com/hls/live/2100297/hd_akamai_iosmob_avc_cam04_indvsaus_odi03/master.m3u8"},
+
+
+
+{"id":"BANvsNZ","title":" BAN vs NZ ","link":" https://dai.google.com/linear/hls/event/UoAXueukS8C1ni88UfqdEQ/master.m3u8"}
+
+]
