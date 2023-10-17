@@ -1,0 +1,45 @@
+ jwplayer("jwplayerDiv").setup({
+
+    controls: true,
+    displaytitle: true,
+    fullscreen: "true",
+    primary: 'html5',
+    stretching: "exactfit",
+    autostart: false,
+    "logo":    {
+        "file": "/images/play-logo.png",
+        "hide": false,
+        "link": "https://aklive.bio.link",
+        "margin": "20",
+        "position": 'top-left'
+    },
+
+  "playlist": [
+      {
+        "sources": [
+          null,
+          {
+
+            "type": "dash",
+            "file": "https://bpprod6linear.akamaized.net/bpk-tv/irdeto_com_Channel_1114/output/manifest.mpd",
+            "drm": {
+              "clearkey": {
+                "keyId": "ccd8f2125fb75641b3b748a5da9e7ee8",
+                "key": "341e396ef814c034fa23a3dac10613b9"
+              }
+            },
+            "label": "0"
+          }
+        ],
+        image: "/images/play-cover.jpg",
+        title: "Shemaroo TV",
+        description: "Live Watching on AK LIVE"
+      }
+    ],
+
+    "image": "/images/play-cover.jpg"
+  }).on('ready', function () {
+    // Set poster image for video element to avoid black background for audio-only programs.
+    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+    if (video) video.setAttribute('poster', this.getConfig().image);
+  }); 
