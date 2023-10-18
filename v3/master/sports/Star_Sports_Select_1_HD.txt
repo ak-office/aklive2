@@ -25,7 +25,7 @@
             "drm": {
               "clearkey": {
                 "keyId": "a7641523ac8758e3b1e0df228719e145",
-                "key": "be802f7acaa55d074c7307124470c0e0"
+                "key": "edd4389642cedee14b46f30a041955a3"
               }
             },
             "label": "0"
