@@ -1,0 +1,14 @@
+#EXTM3U
+#EXT-X-TARGETDURATION:8
+#EXT-X-VERSION:3
+#EXT-X-MEDIA-SEQUENCE:21457
+#EXT-X-ALLOW-CACHE:YES
+#EXT-X-PROGRAM-DATE-TIME:2023-06-07T03:56:28Z
+#EXTINF:7.920,
+http://king.viviotv.xyz:80/play/live.php?mac=A0:BB:3E:00:58:8F&stream=1104678&extension=ts&play_token=join@DenverIsAlivee
+#EXTINF:8.000,
+http://king.viviotv.xyz:80/play/live.php?mac=A0:BB:3E:00:58:8F&stream=1104678&extension=ts&play_token=join@DenverIsAlivee
+#EXTINF:8.000,
+http://king.viviotv.xyz:80/play/live.php?mac=A0:BB:3E:00:58:8F&stream=1104678&extension=ts&play_token=join@DenverIsAlivee
+#EXTINF:8.000,
+http://king.viviotv.xyz:80/play/live.php?mac=A0:BB:3E:00:58:8F&stream=1104678&extension=ts&play_token=join@DenverIsAlivee
