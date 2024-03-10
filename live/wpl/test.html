@@ -2,22 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>WPL 2024 - Hindi Adfree</title>
+  <title> Telegram @AK_LIVE_OFFICE </title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.0/dist/hls.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
-  <script>  if(confirm("Join Our Telegram Channel @iamsom77")) { window.location.href = "https://telegram.me/iamsom77" }</script>
+
   <style>
     html { font-family: sans-serif; background: #000; }
     .plyr { height: 100%; width: 100%; }
-    :root { --plyr-color-main: #ff007f; }
+    :root { --plyr-color-main: #cfcf00; }
+
+    .plyr__video-wrapper::before {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        z-index: 10;
+        content: '';
+        height: 115px;
+        width: 115px;
+        background: url('/images/logo.png') no-repeat;
+        background-size: 85px auto, auto;
+    }
+   
+    
   </style>
 </head>
 <body>
   <div>
-    <video autoplay controls crossorigin playsinline poster="https://v3img.voot.com/v3Storage/assets/wpl-show-page-horizontal-1706001856506.jpg">
+    <video poster="/images/play-cover.jpg">
       <source type="application/vnd.apple.mpegurl" src="">
     </video>
   </div>
@@ -29,7 +44,7 @@
     currentDate.setHours(currentDate.getHours() - 6);
     
     const ddmmyy = `${currentDate.getDate().toString().padStart(2, '0')}${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().substr(-2)}`,
-          m3u8URL = `https://prod-ent-live-gm.jiocinema.com/hls/live/2100323/hd_akamai_androidmob_avc_hin_wpl_s1_m1${ddmmyy}/master.m3u8`;
+          m3u8URL = `https://prod-ent-live-gm.jiocinema.com/hls/live/2100322/uhd_akamai_atv_avc_hin_wpl_s1_m1${ddmmyy}/master.m3u8`;
 
     source.src = m3u8URL;
 
