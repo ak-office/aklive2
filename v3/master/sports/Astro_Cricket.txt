@@ -21,7 +21,7 @@
           {
 
             "type": "dash",
-            "file": "https://bpprod5linear.akamaized.net/bpk-tv/irdeto_com_Channel_256/output/manifest.mpd",
+            "file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd",
             "drm": {
               "clearkey": {
                 "keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10",
