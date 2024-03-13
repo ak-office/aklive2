@@ -29,13 +29,12 @@
   position: absolute;
         top: 15px;
         right: 20px;
-        z-index: 10;
-        content: '';
         background: url('/images/logo.png') no-repeat;
         background-size: 85px auto, auto;
 
 }
     </style>
+          <img id="myLogo">
     <script>
         const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd";
         async function init() {
@@ -79,6 +78,6 @@
         document.addEventListener('shaka-ui-loaded', init);
         document.addEventListener('shaka-ui-load-failed', initFailed);
     </script>
-      <img id="myLogo" src="/images/logo.png">
+
 </body>
 </html>
