@@ -1,45 +1,54 @@
- jwplayer("jwplayerDiv").setup({
+<body bgcolor='black' style='margin:0'>
 
-    controls: true,
-    displaytitle: true,
-    fullscreen: "true",
-    primary: 'html5',
-    stretching: "exactfit",
-    autostart: false,
-    "logo":    {
-        "file": "/images/play-logo.png",
-        "hide": false,
-        "link": "https://aklive.bio.link",
-        "margin": "20",
-        "position": 'top-left'
-    },
+<body>
+    <center>
+            <div data-shaka-player-container style='width: 100%; height: 100%'>
+            <video poster="/images/play-cover.jpg" autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video>
+        </div>
+    </center>
+<script>
 
-  "playlist": [
-      {
-        "sources": [
-          null,
-          {
+        const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd";
+        async function init() {
+            const video = document.getElementById('video');
+            const ui = video['ui'];
+            const controls = ui.getControls();
+            const player = controls.getPlayer();
+            window.player = player;
+            window.ui = ui;
+            player.configure({
+                drm: {
+                    "clearKeys": {
+                        '03c2e0af2f8159f9f0ce9b5dbc865f10': 'cd84ed136b0cc71f8ab8cd4d4f6a2e4c'
+                    }
+                }
+            });
+            player.addEventListener('error', onPlayerErrorEvent);
+            controls.addEventListener('error', onUIErrorEvent);
+            try {
+                await player.load(manifestUri);
+                console.log('The video has now been loaded!');
+            } catch (error) {
+                onPlayerError(error);
+        }}
 
-            "type": "mpd",
-            "file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd",
-            "drm": {
-              "clearkey": {
-                "keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10",
-                "key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c"
-              }
-            },
-            "label": "0"
-          }
-        ],
-        image: "/images/play-cover.jpg",
-        title: "Astro Cricket",
-        description: "Live Watching on AK LIVE"
-      }
-    ],
+        function onPlayerErrorEvent(errorEvent) {
+            onPlayerError(event.detail);
+        }
 
-    "image": "/images/play-cover.jpg"
-  }).on('ready', function () {
-    // Set poster image for video element to avoid black background for audio-only programs.
-    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
-    if (video) video.setAttribute('poster', this.getConfig().image);
-  }); 
+        function onPlayerError(error) {
+            console.error('Error code', error.code, 'object', error);
+        }
+
+        function onUIErrorEvent(errorEvent) {
+            onPlayerError(event.detail);
+        }
+
+        function initFailed(errorEvent) {
+            console.error('Unable to load the UI library!');
+        }
+        document.addEventListener('shaka-ui-loaded', init);
+        document.addEventListener('shaka-ui-load-failed', initFailed);
+
+</script>
+</body>
