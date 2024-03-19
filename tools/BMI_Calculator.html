@@ -155,7 +155,79 @@
       document.getElementById('result').innerText = result;
     }
   </script>
-</body>
+      <div style="display:inline-block">
+        <b><a href="/link/telegram.html"><button class="btn-11 custom-btn"
+              style="width:70vw;height:40px;margin-top:10px;font-size:15px; font-family: 'Oswald', sans-serif">Join Our
+              Telegram Channel</button></a><b></b></b>
+        <div class="stwRainbow"></div> </noscript>
+        <div class="stwBlurRainbow"></div> <br>
+
+
+        <script>
+          $(document).ready(function () {
+            var dftr = $('select.dftr'),
+              headerCount = $('#headerCount');
+            headerCount.html('select a filter or use search');
+            dftr.on('change', function () {
+              dftr.attr('disabled', 'disabled');
+              var records = $('#tvvTable').find('.tvv-item');
+              records.hide();
+              var critriaAttributes = [];
+              dftr.each(function () {
+                var $this = $(this),
+                  $selectedLength = $this.find(':selected').length,
+                  $critriaAttribute = '';
+                if ($selectedLength > 0 && $this.val() != '0') {
+                  if ($selectedLength == 1) {
+                    $critriaAttribute += '[data-' + $this.data('attribute') + '*="' + $this.val() + '"]';
+                  } else {
+                    var $startDataAttribute = '[data-' + $this.data('attribute') + '*="',
+                      $endDataAttribute = '"]',
+                      $selectedValues = $this.val().toString();
+                    $critriaAttribute += $startDataAttribute + $selectedValues.replaceAll(',', ($endDataAttribute + ',' + $startDataAttribute)) + $endDataAttribute;
+                  }
+                  critriaAttributes.push($critriaAttribute);
+                }
+              });
+              var $showRecords = records;
+              if (critriaAttributes.length > 0) {
+                $.each(critriaAttributes, function (i, filterValue) {
+                  $showRecords = $showRecords.filter(filterValue);
+                });
+              }
+              $showRecords.show();
+              headerCount.html($showRecords.length + ' channels filtered');
+              dftr.removeAttr('disabled');
+              $(".fin").val('');
+            });
+            $(".fin").keyup(function () {
+              var filter = $(this).val(),
+                count = 0;
+              $('select.dftr').prop('selectedIndex', 0);
+              $(".tvv-item").each(function () {
+                if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                  $(this).fadeOut();
+                } else {
+                  $(this).show();
+                  count++;
+                }
+              });
+            });
+          });
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        </b></b>
+        </body>
+
+
+        <br>
+        <center>
+          <script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+          <script type="text/javascript">sc_online_i(1661904, "ffffff", "e61c1c");</script><br><noscript>
+        </center>
+        </br> <br>
+
 </html>
-
-
