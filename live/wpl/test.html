@@ -44,7 +44,7 @@
     currentDate.setHours(currentDate.getHours() - 6);
     
     const ddmmyy = `${currentDate.getDate().toString().padStart(2, '0')}${(currentDate.getMonth() + 1).toString().padStart(2, '0')}${currentDate.getFullYear().toString().substr(-2)}`,
-          m3u8URL = `https://prod-ent-live-gm.jiocinema.com/hls/live/2100322/uhd_akamai_atv_avc_hin_wpl_s1_m1${ddmmyy}/master.m3u8`;
+          m3u8URL = `https://prod-sports-north-gm.jiocinema.com/bpk-tv/M1_IPL24_Hin_UHD_IDC_BTS/Fallback/index.m3u8`;
 
     source.src = m3u8URL;
 
