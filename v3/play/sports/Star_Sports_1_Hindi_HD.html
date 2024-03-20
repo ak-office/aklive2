@@ -21,10 +21,23 @@
 <script src="/v3/master/sports/Star_Sports_1_Hindi_HD.js" defer></script>
 
   <script>
-    
-    if (confirm("Join Telegram Channel For Latest Update") == true) {
-      window.open("/link/telegram.html", '_blank');
+ jwplayer("video").setup({
+
+    controls: true,
+    displaytitle: true,
+    fullscreen: "true",
+    primary: 'html5',
+    stretching: "exactfit",
+    autostart: false,
+    "logo":    {
+        "file": "/images/play-logo.png",
+        "hide": false,
+        "link": "https://aklive.bio.link",
+        "margin": "20",
+        "position": 'top-left'
     }
+ }
+                         )
   </script>
 </body>
 </html>
