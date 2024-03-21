@@ -20,7 +20,7 @@
           null,
           {
 
-            "type": "dash",
+            "type": "hls",
             "file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
             "drm": {
               "clearkey": {
