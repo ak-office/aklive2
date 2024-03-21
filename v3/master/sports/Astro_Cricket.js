@@ -27,7 +27,7 @@
 							"key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c"
 						}
 					},
-					"label": "1"
+					"label": "0"
 				},
 			]
 		}
