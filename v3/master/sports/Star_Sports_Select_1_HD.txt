@@ -21,11 +21,11 @@
           {
 
             "type": "dash",
-            "file": "https://bpprod5linear.akamaized.net/bpk-tv/irdeto_com_Channel_413/output/manifest.mpd",
+            "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_413/output/manifest.mpd",
             "drm": {
               "clearkey": {
-                "keyId": "a7641523ac8758e3b1e0df228719e145",
-                "key": "292442b0a0767c4fd5cc111592142708"
+                "keyId": "fb3baca66e285c32b83beb08f5531cd8",
+                "key": "6a7c3abc33f7ccb004ee88bd13b0aacf"
               }
             },
             "label": "0"
@@ -33,7 +33,7 @@
         ],
         image: "/images/play-cover.jpg",
         title: "Star Sports Select 1 HD",
-        description: "Live Watching on AK LIVE"
+        description: "Join Our Telegram Channel @AK_LIVE_OFFICE"
       }
     ],
 
