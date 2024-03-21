@@ -1,83 +1,30 @@
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="referrer" content="no-referrer">
-    <title>Astro Cricket - AK LIVE</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.5.0/shaka-player.ui.min.js" crossorigin="anonymous"></script>    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.5.0/controls.min.css" crossorigin="anonymous">
-
-</head>
-<body bgcolor='black' style='margin:0'>
-
+<html>
+  
+ <title> Star Sports 1 Hindi HD  | AK LIVE  </title> 
+<head> 
+  <script type='text/javascript' src='//perilastronaut.com/37/ba/98/37ba9854968deef9b2f72730344824c6.js'></script>
+  <script type='text/javascript' src='//perilastronaut.com/b5/cf/31/b5cf3116c6e00d4c365e10b23bce0b8f.js'></script>
+</head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<script disable-devtool-auto='true' src='https://cdn.jsdelivr.net/npm/disable-devtool' clear-log='true'
+  disable-select='true' disable-copy='true' disable-cut='true' disable-paste='true'></script>
+<script src="/js/click-heart.js" defer></script>
+<script src="/js/prodevs.js"></script>
+<script src="/login/protection.js"> </script>
+<link rel="stylesheet" href="/css/jw.css">
+<script src="/js/jw-topleft.js"></script>
 <body>
-    <center>
-            <div data-shaka-player-container style='width: 100%; height: 100%'>
-            <video poster="/images/play-cover.jpg" autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video>
-        </div>
-    </center>
-    <style>
+<div id="jwplayerDiv"></div> 
+<script src="/v3/master/sports/Astro_Cricket.js" defer></script>
 
-        #container {
-  height: 115px;
-  width: 115px;
-}
-
-/* This is the CSS for your logo, to position it on top of the video. */
-#myLogo {
-  position: absolute;
-        top: 15px;
-        right: 20px;
-        background: url('/images/logo.png') no-repeat;
-        background-size: 40px auto, auto;
-
-}
-    </style>
-          <img id="myLogo" src="/images/logo.png">
-    <script>
-        const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd";
-        async function init() {
-            const video = document.getElementById('video');
-            const ui = video['ui'];
-            const controls = ui.getControls();
-            const player = controls.getPlayer();
-            window.player = player;
-            window.ui = ui;
-            player.configure({
-                drm: {
-                    "clearKeys": {
-                        '03c2e0af2f8159f9f0ce9b5dbc865f10': 'cd84ed136b0cc71f8ab8cd4d4f6a2e4c'
-                    }
-                }
-            });
-            player.addEventListener('error', onPlayerErrorEvent);
-            controls.addEventListener('error', onUIErrorEvent);
-            try {
-                await player.load(manifestUri);
-                console.log('The video has now been loaded!');
-            } catch (error) {
-                onPlayerError(error);
-        }}
-
-        function onPlayerErrorEvent(errorEvent) {
-            onPlayerError(event.detail);
-        }
-
-        function onPlayerError(error) {
-            console.error('Error code', error.code, 'object', error);
-        }
-
-        function onUIErrorEvent(errorEvent) {
-            onPlayerError(event.detail);
-        }
-
-        function initFailed(errorEvent) {
-            console.error('Unable to load the UI library!');
-        }
-        document.addEventListener('shaka-ui-loaded', init);
-        document.addEventListener('shaka-ui-load-failed', initFailed);
-    </script>
-
+  <script>
+    
+    if (confirm("Join Telegram Channel For Latest Update") == true) {
+      window.open("/link/telegram.html", '_blank');
+    }
+  </script>
 </body>
 </html>
