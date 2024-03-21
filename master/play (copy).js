@@ -1,5 +1,5 @@
   const urlParams = new URLSearchParams(window.location.search);
-  const aklive = urlParams.get('aklive');
+  const id = urlParams.get('id');
   jwplayer("jwplayerDiv").setup({
 
     controls: "true",
@@ -13,11 +13,11 @@
     playlist: [
       ,
       {
-        title: "𝗔𝗞 𝗟𝗜𝗩𝗘",
-        description: "Watching on AK LIVE",
+        title: "𝗔𝗞 𝗟𝗜𝗩𝗘 🇮🇳",
+        description: "Join Telegram Channel @AK_LIVE_OFFICE",
         image: "/images/play-cover.jpg",
         sources: [{
-          file: aklive,
+          file: id,
           type: 'hls',
           label: "0"
         }],
