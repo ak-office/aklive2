@@ -28,10 +28,13 @@
 						}
 					},
 					"label": "0"
-				},
-			]
-		}
-	],
+				}
+        ],
+        image: "/images/play-cover.jpg",
+        title: "Star Sports 1 Hindi HD",
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
+      }
+    ],
 
     "image": "/images/play-cover.jpg"
   }).on('ready', function () {
