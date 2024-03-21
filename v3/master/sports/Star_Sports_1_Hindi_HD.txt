@@ -21,11 +21,11 @@
           {
 
             "type": "dash",
-            "file": "https://bpprod5linear.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd",
+            "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd",
             "drm": {
               "clearkey": {
-                "keyId": "6a9e4204f3f8577ebf6e79b3b18573f8",
-                "key": "3deedae92d2697b3a47630995ebc1b32"
+                "keyId": "1373b6e42b815fa7bb60a634a8f30ac4",
+                "key": "bd093ff30bc81ca92803cc888c66c138"
               }
             },
             "label": "0"
@@ -33,7 +33,7 @@
         ],
         image: "/images/play-cover.jpg",
         title: "Star Sports 1 Hindi HD",
-        description: "Live Watching on AK LIVE"
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
       }
     ],
 
