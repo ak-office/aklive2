@@ -33,7 +33,7 @@
         ],
         image: "/images/play-cover.jpg",
         title: "Star Sports Select 2 HD",
-        description: "Join Our Telegram Channel @AK_LIVE_OFFICE"
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
       }
     ],
 
