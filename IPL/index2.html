@@ -41,25 +41,25 @@
     <option value="tamil">Tamil</option>
     <option value="telugu">Telugu</option>
   </select>
-</div> </center>
-<div id="video"></div>
+</div>
+<div id="video"></div> </center>
 
 <script type="text/javascript">
 if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href = "https://telegram.me/CricketKaDiwana" }
   document.addEventListener("DOMContentLoaded", function() {
     var videoSources = {
-      "hin": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100323/hd_akamai_androidmob_avc_hin_ipl_s1_m1220324/master.m3u8",
-      "eng": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100299/hd_akamai_androidmob_avc_eng_ipl_s1_m1220324/master.m3u8",
-      "haryanvi": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109700/hd_akamai_androidmob_avc_odia_ipl_s1_m1220324/master.m3u8",
-      "gujarati": "https://prod-sports-north-cf.jiocinema.com/hls/live/2109750/hd_akamai_androidmob_avc_guj_ipl_s1_m1220324/master.m3u8",
-      "kannada": "https://prod-sports-south-fa.jiocinema.com/hls/live/2109724/hd_akamai_androidmob_avc_kan_ipl_s1_m1220324/master.m3u8",
-      "marathi": "https://prod-sports-north-cf.jiocinema.com/hls/live/2109768/hd_akamai_androidmob_avc_mar_ipl_s1_m1220324/master.m3u8",
-      "malayalam": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109706/hd_akamai_androidmob_avc_mal_ipl_s1_m1220324/master.m3u8",
-      "punjabi": "https://prod-sports-north-fa.jiocinema.com/hls/live/2109756/hd_akamai_androidmob_avc_pun_ipl_s1_m1220324/master.m3u8",
-      "bhojpuri": "https://prod-sports-north-gm.jiocinema.com/hls/live/2109762/hd_akamai_androidmob_avc_bhoj_ipl_s1_m1220324/master.m3u8",
-      "bengali": "https://prod-sports-north-gm.jiocinema.com/hls/live/2109774/hd_akamai_androidmob_avc_ben_ipl_s1_m1220324/master.m3u8",
-      "tamil": "https://prod-sports-south-gm.jiocinema.com/hls/live/2109712/hd_akamai_androidmob_avc_tam_ipl_s1_m1220324/master.m3u8",
-      "telugu": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109718/hd_akamai_androidmob_avc_tel_ipl_s1_m1220324/master.m3u8"
+      "hin": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Hin_HD_IDC_AND/Fallback/index.m3u8",
+      "eng": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Eng_HD_IDC_AND/Fallback/index.m3u8",
+      "haryanvi": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Odia_HD_IDC_AND/Fallback/index.m3u8",
+      "gujarati": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Guj_HD_IDC_AND/Fallback/index.m3u8",
+      "kannada": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Kan_HD_IDC_AND/Fallback/index.m3u8",
+      "marathi": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Mar_HD_IDC_AND/Fallback/index.m3u8",
+      "malayalam": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Mal_HD_IDC_AND/Fallback/index.m3u8",
+      "punjabi": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Punj_HD_IDC_AND/Fallback/index.m3u8",
+      "bhojpuri": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Bhoj_HD_IDC_AND/Fallback/index.m3u8",
+      "bengali": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Ben_HD_IDC_AND/Fallback/index.m3u8",
+      "tamil": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Tam_HD_IDC_AND/Fallback/index.m3u8",
+      "telugu": "https://prod-sports-north-cf.jiocinema.com/bpk-tv/M1_IPL24_Tel_HD_IDC_AND/Fallback/index.m3u8"
     };
 
     var playerInstance = jwplayer("video");
@@ -79,13 +79,7 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
       autostart: true,
       mute: false,
       playlist: [{ file: videoSource }]
-    
-  image: "/master/akplay.jpg"
-  }).on('ready', function () {
-    // Set poster image for video element to avoid black background for audio-only programs.
-    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
-    if (video) video.setAttribute('poster', this.getConfig().image);
-
+    });
   });
 </script>
 </body>
