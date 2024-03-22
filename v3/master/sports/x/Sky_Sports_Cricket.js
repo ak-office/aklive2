@@ -17,23 +17,22 @@
   "playlist": [
       {
         "sources": [
-          null,
           {
 
-            "type": "dash",
+            "type": "mpd",
             "file": "https://linear027-gb-dash1-prd-ll.cdn.skycdp.com/016a/Content/DASH_003_720_30/Live/channel(skysportscricket)/manifest_720.mpd",
             "drm": {
               "clearkey": {
-                "keyId": "0003a6c61c2b2f7f0a9d760ac83c06d8",
-                "key": "7305fa96d356316f2d544bfc78a6922c"
+                "keyId": "000543c0dc49b43c0e816c2a404249de",
+                "key": "836c311dd132a49dbed1049d92800304"
               }
             },
             "label": "0"
           }
         ],
         image: "/images/play-cover.jpg",
-        title: "Sky Sports Cricket",
-        description: "Live Watching on AK LIVE"
+        title: "Star Sports Select 1 HD",
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
       }
     ],
 
