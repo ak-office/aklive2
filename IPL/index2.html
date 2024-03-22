@@ -24,7 +24,7 @@
 </style>
 </head>
 
-<body>
+<body> <center>
 <div id="video-selector">
   <label for="video-select">Select Video Language:</label>
   <select id="video-select">
@@ -41,7 +41,7 @@
     <option value="tamil">Tamil</option>
     <option value="telugu">Telugu</option>
   </select>
-</div>
+</div> </center>
 <div id="video"></div>
 
 <script type="text/javascript">
@@ -80,7 +80,7 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
       mute: false,
       playlist: [{ file: videoSource }]
     
-  "image": "/master/akplay.jpg"
+  image: "/master/akplay.jpg"
   }).on('ready', function () {
     // Set poster image for video element to avoid black background for audio-only programs.
     var video = document.getElementById(this.id).getElementsByTagName('video')[0];
