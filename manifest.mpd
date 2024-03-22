@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MPD xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="urn:mpeg:dash:schema:mpd:2011"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xsi:schemaLocation="urn:mpeg:DASH:schema:MPD:2011 http://standards.iso.org/ittf/PubliclyAvailableStandards/MPEG-DASH_schema_files/DASH-MPD.xsd"
+     profiles="urn:mpeg:dash:profile:isoff-live:2011"
+     type="dynamic"
+     minimumUpdatePeriod="PT1.203S" 
+     publishTime="2024-03-22T11:07:46.448Z" 
+     availabilityStartTime="2024-03-08T05:47:07.229Z" 
+     timeShiftBufferDepth="PT18.0S"
+     suggestedPresentationDelay="PT6.0S" 
+     minBufferTime="PT6.0S">
+<ProgramInformation>
+    <Title>common.smil</Title>
+</ProgramInformation>
+<Period id="0" start="PT0.0S">
+    <AdaptationSet id="0" group="1" mimeType="video/mp4" maxWidth="1920" maxHeight="1080" par="16:9" frameRate="15" segmentAlignment="true" startWithSAP="1" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+        <SegmentTemplate timescale="90000" media="segment_ctvideo_cfm4s_rid$RepresentationID$_cs$Time$_mpd.m4s" initialization="segment_ctvideo_cfm4s_rid$RepresentationID$_cinit_mpd.m4s">
+            <SegmentTimeline>
+                <S t="110593677510" d="270000"/>
+                <S d="270000"/>
+                <S d="270000"/>
+                <S d="270000"/>
+                <S d="270000"/>
+                <S d="270000"/>
+            </SegmentTimeline>
+        </SegmentTemplate>
+        <Representation id="p0va0br800000" codecs="hvc1.1.6.L93.B1.0.1.1" width="1280" height="720" sar="1:1" bandwidth="800000" />
+        <Representation id="p0va0br4000000" codecs="hvc1.1.6.L120.B1.0.1.1" width="1920" height="1080" sar="1:1" bandwidth="4000000" />
+    </AdaptationSet>
+    <AdaptationSet id="1" group="2" mimeType="audio/mp4" lang="eng" segmentAlignment="true" startWithSAP="1" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
+        <AudioChannelConfiguration schemeIdUri="urn:mpeg:dash:23003:3:audio_channel_configuration:2011" value="2"/>
+        <SegmentTemplate timescale="48000" media="segment_ctaudio_cfm4s_rid$RepresentationID$_cs$Time$_mpd.m4s" initialization="segment_ctaudio_cfm4s_rid$RepresentationID$_cinit_mpd.m4s">
+            <SegmentTimeline>
+                <S t="58983295680" d="143376"/>
+                <S d="144384"/>
+                <S d="143376"/>
+                <S d="144384"/>
+                <S d="144384"/>
+                <S d="134112"/>
+            </SegmentTimeline>
+        </SegmentTemplate>
+        <Representation id="p0aa0br92875" codecs="mp4a.40.2" audioSamplingRate="48000" bandwidth="92875">
+        </Representation>
+    </AdaptationSet>
+</Period>
+<UTCTiming schemeIdUri="urn:mpeg:dash:utc:direct:2014" value="2024-03-22T11:07:46.448Z"/>
+</MPD>
