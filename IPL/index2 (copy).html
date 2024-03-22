@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPL 2024 - JioCinema</title>
+<!-- <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script> -->
+<link rel="stylesheet" href="/css/jw.css">
+<script src="/js/jw-topright.js"></script>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .jwplayer {
+    position: absolute !important;
+  }
+
+  #video-selector {
+    margin: 10px;
+  }
+</style>
+</head>
+
+<body>
+<div id="video-selector">
+  <label for="video-select">Select Video Language:</label>
+  <select id="video-select">
+    <option value="hin" selected>Hindi</option>
+    <option value="eng">English</option>
+    <option value="haryanvi">Haryanvi</option>
+    <option value="gujarati">Gujarati</option>
+    <option value="kannada">Kannada</option>
+    <option value="marathi">Marathi</option>
+    <option value="malayalam">Malayalam</option>
+    <option value="punjabi">Punjabi</option>
+    <option value="bhojpuri">Bhojpuri</option>
+    <option value="bengali">Bengali</option>
+    <option value="tamil">Tamil</option>
+    <option value="telugu">Telugu</option>
+  </select>
+</div>
+<div id="video"></div>
+
+<script type="text/javascript">
+if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href = "https://telegram.me/CricketKaDiwana" }
+  document.addEventListener("DOMContentLoaded", function() {
+    var videoSources = {
+      "hin": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100323/hd_akamai_androidmob_avc_hin_ipl_s1_m1220324/master.m3u8",
+      "eng": "https://prod-ent-live-gm.jiocinema.com/hls/live/2100299/hd_akamai_androidmob_avc_eng_ipl_s1_m1220324/master.m3u8",
+      "haryanvi": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109700/hd_akamai_androidmob_avc_odia_ipl_s1_m1220324/master.m3u8",
+      "gujarati": "https://prod-sports-north-cf.jiocinema.com/hls/live/2109750/hd_akamai_androidmob_avc_guj_ipl_s1_m1220324/master.m3u8",
+      "kannada": "https://prod-sports-south-fa.jiocinema.com/hls/live/2109724/hd_akamai_androidmob_avc_kan_ipl_s1_m1220324/master.m3u8",
+      "marathi": "https://prod-sports-north-cf.jiocinema.com/hls/live/2109768/hd_akamai_androidmob_avc_mar_ipl_s1_m1220324/master.m3u8",
+      "malayalam": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109706/hd_akamai_androidmob_avc_mal_ipl_s1_m1220324/master.m3u8",
+      "punjabi": "https://prod-sports-north-fa.jiocinema.com/hls/live/2109756/hd_akamai_androidmob_avc_pun_ipl_s1_m1220324/master.m3u8",
+      "bhojpuri": "https://prod-sports-north-gm.jiocinema.com/hls/live/2109762/hd_akamai_androidmob_avc_bhoj_ipl_s1_m1220324/master.m3u8",
+      "bengali": "https://prod-sports-north-gm.jiocinema.com/hls/live/2109774/hd_akamai_androidmob_avc_ben_ipl_s1_m1220324/master.m3u8",
+      "tamil": "https://prod-sports-south-gm.jiocinema.com/hls/live/2109712/hd_akamai_androidmob_avc_tam_ipl_s1_m1220324/master.m3u8",
+      "telugu": "https://prod-sports-south-cf.jiocinema.com/hls/live/2109718/hd_akamai_androidmob_avc_tel_ipl_s1_m1220324/master.m3u8"
+    };
+
+    var playerInstance = jwplayer("video");
+
+    document.getElementById("video-select").addEventListener("change", function() {
+      var selectedValue = this.value;
+      var videoSource = videoSources[selectedValue];
+
+      playerInstance.load([{ file: videoSource }]);
+      playerInstance.play();
+    });
+
+    var selectedValue = document.getElementById("video-select").value;
+    var videoSource = videoSources[selectedValue];
+
+    playerInstance.setup({
+      autostart: true,
+      mute: false,
+      playlist: [{ file: videoSource }]
+    });
+  });
+</script>
+</body>
+</html>
