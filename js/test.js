@@ -11,7 +11,7 @@ https://ssl.p.jwpcdn.com/player/v/8.32.1/notice.txt
 
 var jwDefaults = {
 "aboutlink": "https://aklive.bio.link/",
-"abouttext": Join Telegram - @AK_LIVE_Office,
+"abouttext": "Join Telegram - @AK_LIVE_Office",
 "aspectratio": "16:9",
 "autostart": true,
 "cast": {},
