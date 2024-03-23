@@ -12,7 +12,7 @@ https://ssl.p.jwpcdn.com/player/v/8.32.1/notice.txt
 var jwDefaults = {
 "aboutlink": "https://aklive.bio.link/",
 "abouttext": "Join Telegram - @AK_LIVE_Office",
-"image": "/images/play-cover.jpg",
+"image":{file:"/images/play-cover.jpg"},
 "logo":{file:"/images/play-logo.png",hide:!1, "margin": "30" , link:"https://aklive.bio.link/",position:"top-left"}, 
 "aspectratio": "16:9",
 "autostart": false,
