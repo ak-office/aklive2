@@ -13,7 +13,7 @@ var jwDefaults = {
 "aboutlink": "https://aklive.bio.link/",
 "abouttext": "Join Telegram - @AK_LIVE_Office",
 "image":{file:"/images/play-cover.jpg"},
-"logo":{file:"/images/play-logo.png",hide:!1, "margin": "35" , link:"https://aklive.bio.link/",position:"top-left"},
+"logo":{file:"/images/play-logo.png",hide:!1, "margin": "30" , link:"https://aklive.bio.link/",position:"top-left"},
 "aspectratio": "16:9",
 "autostart": false,
 "cast": {},
