@@ -29,11 +29,7 @@
             window.player = player;
             window.ui = ui;
             player.configure({
-                drm: {
-                    "clearKeys": {
-                        '00000000000000000000000000000000': '00000000000000000000000000000000'
-                    }
-                }
+                drm: 
             });
             player.addEventListener('error', onPlayerErrorEvent);
             controls.addEventListener('error', onUIErrorEvent);
