@@ -28,7 +28,7 @@ var jwDefaults = {
 "playbackRateControls": false,
 "preload": "metadata",
 "repeat": false,
-"stretching": "uniform",
+"stretching": "exactfit",
 "width": "100%"
 };
 jwplayer.defaults = jwDefaults;
