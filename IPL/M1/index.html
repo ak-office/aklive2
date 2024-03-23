@@ -112,13 +112,13 @@
     <option value="bengali">BENGALI</option>
     <option value="tamil">TAMIL</option>
     <option value="telugu">TELEGU</option>
-    <option value="insiders">Insiders</option>
+<!--<option value="insiders">Insiders</option>
     <option value="hangout">Hangout</option>
     <option value="hero_cam">Hero Cam</option>
     <option value="batter_cam">Batter Cam</option>
     <option value="stump_cam">Stump Cam</option>
     <option value="birds_eye_cam">Birds Eye Cam</option>
-    <option value="split_cam">Split Cam</option>
+    <option value="split_cam">Split Cam</option> -->
   </select>
 </div> </center>
 <div id="video"></div>
@@ -127,25 +127,25 @@
 if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href = "https://telegram.me/AK_LIVE_OFFICE" }
   document.addEventListener("DOMContentLoaded", function() {
     var videoSources = {
-      "hindi": "https://prod-ent-live-gm.jiocinema.com/out/v1/0032a90f57224764b183281b210ff4df/master.m3u8",
-      "english": "https://prod-ent-live-gm.jiocinema.com/out/v1/272eae19c0fb4d50a8efa0261ed53cdd/master.m3u8",
-      "haryanvi": "https://prod-ent-live-gm.jiocinema.com/out/v1/1472bd73a6094d0e9e30cdfd615225a2/master.m3u8",
-      "bhojpuri": "https://prod-ent-live-gm.jiocinema.com/out/v1/a77d9c6804ab4f14abbaf4874d26c6f9/master.m3u8",
-      "gujarati": "https://prod-ent-live-gm.jiocinema.com/out/v1/a700a944e65a4cab872a606916d994f8/master.m3u8",
-      "punjabi": "https://prod-ent-live-gm.jiocinema.com/out/v1/bcc8f8d422bb4fdabe310a1e69056c04/master.m3u8",
-      "kannada": "https://prod-ent-live-gm.jiocinema.com/out/v1/31ee83696bc04e449c76e3c2211ebc4b/master.m3u8",
-      "marathi": "https://prod-ent-live-gm.jiocinema.com/out/v1/eb5f992469d84cdc992ec94df7e590e1/master.m3u8",
-      "malayalam": "https://prod-ent-live-gm.jiocinema.com/out/v1/89a75f3be9f64596a4f33da70a1b604a/master.m3u8",
-      "bengali": "https://prod-ent-live-gm.jiocinema.com/out/v1/49bf9a5c837243c09d72043b7fa2a530/master.m3u8",
-      "tamil": "https://prod-ent-live-gm.jiocinema.com/out/v1/9fdb956e26594b7d90f3641cf16ad597/master.m3u8",
-      "telugu": "https://prod-ent-live-gm.jiocinema.com/out/v1/96d74327e4714f49b78a82329a8ab414/master.m3u8",
-      "insiders": "https://prod-ent-live-gm.jiocinema.com/out/v1/c14f6fb1985845f38650eac97f84b26c/master.m3u8",
-      "hangout": "https://prod-ent-live-gm.jiocinema.com/out/v1/3533142cda074c078afc16bf1bc5c75b/master.m3u8",
-      "hero_cam": "https://prod-ent-live-gm.jiocinema.com/out/v1/a1469c70c34f4712982e6c895f05c913/master.m3u8",
-      "batter_cam": "https://prod-ent-live-gm.jiocinema.com/out/v1/933538ce86d04486b8fc3f949200d951/master.m3u8",
-      "stump_cam": "https://prod-ent-live-gm.jiocinema.com/out/v1/6b8480f7115444298d80daa3bc442c28/master.m3u8",
-      "birds_eye_cam": "https://prod-ent-live-gm.jiocinema.com/out/v1/4eb7fa6d5c8342d298be3b6649e9cbe9/master.m3u8",
-      "split_cam": "https://prod-ent-live-gm.jiocinema.com/out/v1/31657ca6ac464025ba5ceffa7ec48939/master.m3u8"
+      "hindi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Hin_HD_IDC_AND/Fallback/index.m3u8",
+      "english": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Eng_HD_IDC_AND/Fallback/index.m3u8",
+      "haryanvi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Odia_HD_IDC_AND/Fallback/index.m3u8",
+      "bhojpuri": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Bhoj_HD_IDC_AND/index.m3u8",
+      "gujarati": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Guj_HD_IDC_AND/index.m3u8",
+      "punjabi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Punj_HD_IDC_AND/index.m3u8",
+      "kannada": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Kan_HD_IDC_AND/index.m3u8",
+      "marathi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Mar_HD_IDC_AND/index.m3u8",
+      "malayalam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Mal_HD_IDC_AND/index.m3u8",
+      "bengali": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Ben_HD_IDC_AND/index.m3u8",
+      "tamil": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Tam_HD_IDC_AND/index.m3u8",
+      "telugu": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/M1_IPL24_Tel_HD_IDC_AND/index.m3u8",
+      "insiders": "",
+      "hangout": "",
+      "hero_cam": "",
+      "batter_cam": "",
+      "stump_cam": "",
+      "birds_eye_cam": "",
+      "split_cam": ""
     };
 
     var playerInstance = jwplayer("video");
