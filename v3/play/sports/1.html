@@ -20,43 +20,46 @@
     </center>
 <script>
 
-        const manifestUri = "https://bpcdn.dialog.lk/bpk-tv/Ch120/output/index.mpd";
-        async function init() {
-            const video = document.getElementById('video');
-            const ui = video['ui'];
-            const controls = ui.getControls();
-            const player = controls.getPlayer();
-            window.player = player;
-            window.ui = ui;
-            player.configure({
-                drm: 
-            });
-            player.addEventListener('error', onPlayerErrorEvent);
-            controls.addEventListener('error', onUIErrorEvent);
-            try {
-                await player.load(manifestUri);
-                console.log('The video has now been loaded!');
-            } catch (error) {
-                onPlayerError(error);
-        }}
+        var manifestUri = 'https://bpcdn.dialog.lk/bpk-tv/Ch120/output/index.mpd'
 
-        function onPlayerErrorEvent(errorEvent) {
-            onPlayerError(event.detail);
-        }
+function initApp() {
+    shaka.polyfill.installAll();
 
-        function onPlayerError(error) {
-            console.error('Error code', error.code, 'object', error);
-        }
+    if (shaka.Player.isBrowserSupported()) {
+        initPlayer();
+    } else {
+        console.error('Browser not supported!');
+    }
+}
 
-        function onUIErrorEvent(errorEvent) {
-            onPlayerError(event.detail);
-        }
+function initPlayer() {
+    // Create a Player instance.
+    var video = document.getElementById('video');
 
-        function initFailed(errorEvent) {
-            console.error('Unable to load the UI library!');
-        }
-        document.addEventListener('shaka-ui-loaded', init);
-        document.addEventListener('shaka-ui-load-failed', initFailed);
+    // shaka.media.ManifestParser.registerParserByExtension("m3u8", shaka.hls.HlsParser);
+    // shaka.media.ManifestParser.registerParserByMime("Application/vnd.apple.mpegurl", shaka.hls.HlsParser);
+    // shaka.media.ManifestParser.registerParserByMime("application/x-mpegURL", shaka.hls.HlsParser);
+
+    var player = new shaka.Player(video);
+
+    window.player = player;
+
+    player.addEventListener('error', onErrorEvent);
+
+    player.load(manifestUri).then(function () {
+        console.log('The video has now been loaded!');
+    }).catch(onError);
+}
+
+function onErrorEvent(event) {
+    onError(event.detail);
+}
+
+function onError(error) {
+    console.error('Error code', error.code, 'object', error);
+}
+
+document.addEventListener('DOMContentLoaded', initApp);
 
 </script>
 </body>
