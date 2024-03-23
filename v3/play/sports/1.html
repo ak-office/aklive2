@@ -27,13 +27,7 @@
             const controls = ui.getControls();
             const player = controls.getPlayer();
             window.player = player;
-            window.ui = ui;
-            player.configure({
-                drm: {
-                    "clearKeys": {
-                        '': ''
-                    }
-                }
+            window.ui = ui
             });
             player.addEventListener('error', onPlayerErrorEvent);
             controls.addEventListener('error', onUIErrorEvent);
