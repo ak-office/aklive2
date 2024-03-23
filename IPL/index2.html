@@ -74,7 +74,7 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
 
     var selectedValue = document.getElementById("video-select").value;
     var videoSource = videoSources[selectedValue];
-
+    jwplayer().resize('5%', 250);
     playerInstance.setup({
       autostart: false,
       mute: false,
