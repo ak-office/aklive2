@@ -81,12 +81,12 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
       height:"50%",
       mute: false,
       playlist: [{ file: videoSource }]
-    "image": "http://assets.ur.se/id/196066/images/1_l.jpg",
+      "image": "http://assets.ur.se/id/196066/images/1_l.jpg",
 }).on('ready', function() {
     // Set poster image for video element to avoid black background for audio-only programs.
     var video = document.getElementById(this.id).getElementsByTagName('video')[0];
     if (video) video.setAttribute('poster', this.getConfig().image);
-});
+ 
   });
 </script>
 </body>
