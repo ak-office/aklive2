@@ -27,7 +27,13 @@
             const controls = ui.getControls();
             const player = controls.getPlayer();
             window.player = player;
-            window.ui = ui
+            window.ui = ui;;
+            player.configure({
+                hls: {{
+                
+                    }
+                }
+
             });
             player.addEventListener('error', onPlayerErrorEvent);
             controls.addEventListener('error', onUIErrorEvent);
