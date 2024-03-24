@@ -30,6 +30,5 @@ image: "/images/play-cover.jpg",width: "100%",height: "100%" ,
 logo:{file:"/images/play-logo.png",hide:!1, "margin": "30" , 
 link:"https://aklive.bio.link/",position:"top-right"},
 mute:!1,ph:1,pid:"KB5zFt7A",pipIcon:"enabled",playbackRateControls:!0,preload:"metadata",repeat:false,sharing:{code:"",sites:["twitter","email","reddit"]},
-skin:{controlbar:{background:"rgba(0,0,0,0)",icons:"rgba(255,255,255,0.8)",iconsActive:"#fcfc1e",text:"#FFFFFF"},
-text:"rgba(255,255,255,0.8)",textActive:"#fcfc1e"},timeslider:{progress:"#fcfc1e",rail:"rgba(255,255,255,0.3)"},tooltips:{background:"#FFFFFF",text:"#000000"}},width:"100%"
+skin:{controlbar:{background:"rgba(0,0,0,0)",icons:"rgba(255,255,255,0.8)",iconsActive:"#fcfc1e",text:"#FFFFFF"},textActive:"#fcfc1e"},timeslider:{progress:"#fcfc1e",rail:"rgba(255,255,255,0.3)"},tooltips:{background:"#FFFFFF",text:"#000000"}},width:"100%"
 };jwplayer.defaults=jwDefaults;
