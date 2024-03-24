@@ -155,9 +155,16 @@ if(confirm("Join Our Telegram Channel ")) { window.location.href = "https://tele
     }
 
     playerInstance.setup({
-      autostart: true,
+      autostart: false,
+      width:"100%",
       mute: false,
+      image: "/images/play-cover.jpg",
       playlist: playlist
+      
+}).on('ready', function() {
+    // Set poster image for video element to avoid black background for audio-only programs.
+    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+    if (video) video.setAttribute('poster', this.getConfig().image);
     });
   });
 </script>
