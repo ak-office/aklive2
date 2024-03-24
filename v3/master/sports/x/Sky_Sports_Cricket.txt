@@ -31,7 +31,7 @@
           }
         ],
         image: "/images/play-cover.jpg",
-        title: "Star Sports Select 1 HD",
+        title: "Sky Sports Cricket",
         description: "Join Telegram Channel @AK_LIVE_OFFICE"
       }
     ],
