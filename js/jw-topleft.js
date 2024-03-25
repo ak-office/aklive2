@@ -25,10 +25,10 @@ fontSize:15,
 cast:{},
 controls:!0,displayHeading:!1,displaydescription:!0,
 displaytitle:!0,intl:{en:{related:{autoplaymessage:"",heading:"Catchups"},sharing:{heading:"Share Video"}}},
-key:"CKE6wMNcgv/x8O0QTtvn+g9+M7557NKw9JaxePM5dNISdSDy10J0g5V51ODmHqRD",
+key:"X7I4RJUrdiVWwPMdQFoBhZv1daL8E3DpPDVhlVuVRLxdN0wDRjjOX5YXyr4",
 image: "/images/play-cover.jpg",width: "100%",height: "100%" ,
 logo:{file:"/images/play-logo.png",hide:!1, "margin": "32" , 
 link:"https://aklive.bio.link/",position:"top-left"},
-mute:!1,ph:1,pid:"KB5zFt7A",pipIcon:"enabled",playbackRateControls:!0,preload:"metadata",repeat:false,sharing:{code:"",sites:["twitter","email","reddit"]},
+mute:!1,ph:1,pid:"AAQhNaPL",pipIcon:"enabled",playbackRateControls:!0,preload:"metadata",repeat:false,sharing:{code:"",sites:["twitter","email","reddit"]},
 skin:{controlbar:{iconsActive:"#fcfc1e",text:"#FFFFFF"},menus:{textActive:"#fcfc1e"},timeslider:{progress:"#fcfc1e"}},width:"100%"
 };jwplayer.defaults=jwDefaults;
