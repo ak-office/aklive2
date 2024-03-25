@@ -64,15 +64,15 @@
 </head>
 
 
-<title>IPL 2024 - 4K (M1)</title>
+<title>IPL 2024 - M1 (4K) </title>
   
-<h5 class="header2"> IPL 2024 - 4K (M1) <i class="fa fa-caret-down" style="float:right;margin-bottom:13px;color:#999"></i>
+<h5 class="header2"> IPL 2024 - M1 (4K) <i class="fa fa-caret-down" style="float:right;margin-bottom:13px;color:#999"></i>
 </h5>
 <!-- <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script> -->
 <link rel="stylesheet" href="/css/jw.css">
 <script src="/js/jw/top-right.js"></script>
 
-<div><style>
+<style>
   body {
     margin: 20;
   }
@@ -94,8 +94,7 @@
 <center>
 <div id="video-selector">
 <label for="video-select" style="font-weight: bold; font-size: 15px; color: white; text-align: center;">Select Video Language : </label>
-  <select id="video-select">
-        <option value="hindi_4k" selected>Hindi 4K</option>
+    <option value="hindi_4k" selected>Hindi 4K</option>
     <option value="english_4k">English 4K</option>
     <option value="haryanvi_4k">Haryanvi 4K</option>
     <option value="bhojpuri_4k">Bhojpuri 4K</option>
@@ -115,7 +114,7 @@
     <option value="birds_eye_cam_4k">Birds Eye Cam 4K</option>
     <option value="split_cam_4k">Split Cam 4K</option>
   </select>
-</div> </center>
+</div>
 <div id="video"></div>
 
 <script type="text/javascript">
@@ -165,12 +164,11 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
       playlist: [{ file: videoSource }]
       
 }).on('ready', function() {
-    // Set poster image for video element to avoid black background for audio-only programs.
     var video = document.getElementById(this.id).getElementsByTagName('video')[0];
     if (video) video.setAttribute('poster', this.getConfig().image);
     });
   });
-</script> </div> </center>
+</script> </center>
 
   <br> </br> 
 
