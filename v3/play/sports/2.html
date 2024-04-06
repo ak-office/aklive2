@@ -17,71 +17,9 @@
 <div id="jwplayerDiv"></div>
 
   <script>
- jwplayer("jwplayerDiv").setup({
-
-    controls: true,
-    displaytitle: true,
-    fullscreen: "true",
-    primary: 'html5',
-    stretching: "exactfit",
-    autostart: false,
-    "logo":    {
-        "file": "/images/play-logo.png",
-        "hide": false,
-        "link": "https://aklive.bio.link",
-        "margin": "20",
-        "position": 'top-left'
-    },
-
-  "playlist": [
-		{
-			"sources": [
-				null,
-				{
-					"default": false,
-					"type": "mpd",
-					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
-					"drm": {
-						"clearkey": {
-							"key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c",
-							"keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10"
-						}
-					},
-					"label": "1"
-				},
-				{
-					"default": true,
-					"type": "mpd",
-					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
-					"drm": {
-						"widevine": {},
-						"playready": {}
-					},
-					"label": "2"
-          }
-        ],
-        image: "/images/play-cover.jpg",
-        title: "Astro Cricket",
-        description: "Join Telegram @AK_LIVE_OFFICE"
-      }
-    ],
-    "primary": "html5",
-  	"hlshtml": true,
-    "image": "/images/play-cover.jpg"
-  }).on('ready', function () {
-    // Set poster image for video element to avoid black background for audio-only programs.
-    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
-    if (video) video.setAttribute('poster', this.getConfig().image);
-  }); 
-  </script>
-  
-</html>
-
-
-
-
-
-{
+ jwplayer("jwplayerDiv").setup(
+	 
+	{
 	"playlist": [
 		{
 			"sources": [
@@ -114,4 +52,7 @@
 	"primary": "html5",
 	"hlshtml": true,
 	"autostart": false
-} 
+}); 
+  </script>
+  
+</html>
