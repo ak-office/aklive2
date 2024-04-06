@@ -1,6 +1,6 @@
 <!DOCTYPE html>
   
- <title> Sony Sports Ten 1 HD | AK LIVE  </title> 
+ <title> Astro Cricket | AK LIVE  </title> 
 <head> 
 </head>  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,7 +13,7 @@
 <script src="/js/prodevs.js"></script>
 <script src="/login/protection.js"> </script>
 <link rel="stylesheet" href="/css/jw.css">
-<script src="/js/jw-topleft.js"></script>
+<script src="/js/jw/top-left.js"></script>
 <div id="jwplayerDiv"></div>
 
   <script>
@@ -34,20 +34,30 @@
     },
 
   "playlist": [
-      {
-        "sources": [
-          null,
-          {
-
-            "type": "dash",
-            "file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd",
-            "drm": {
-              "clearkey": {
-                "keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10",
-                "key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c"
-              }
-            },
-            "label": "0"
+		{
+			"sources": [
+				null,
+				{
+					"default": false,
+					"type": "mpd",
+					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
+					"drm": {
+						"clearkey": {
+							"key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c",
+							"keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10"
+						}
+					},
+					"label": "1"
+				},
+				{
+					"default": true,
+					"type": "mpd",
+					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
+					"drm": {
+						"widevine": {},
+						"playready": {}
+					},
+					"label": "2"
           }
         ],
         image: "/images/play-cover.jpg",
@@ -55,7 +65,8 @@
         description: "Join Telegram @AK_LIVE_OFFICE"
       }
     ],
-
+    "primary": "html5",
+  	"hlshtml": true,
     "image": "/images/play-cover.jpg"
   }).on('ready', function () {
     // Set poster image for video element to avoid black background for audio-only programs.
@@ -65,3 +76,42 @@
   </script>
   
 </html>
+
+
+
+
+
+{
+	"playlist": [
+		{
+			"sources": [
+				null,
+				{
+					"default": false,
+					"type": "mpd",
+					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
+					"drm": {
+						"clearkey": {
+							"key": "cd84ed136b0cc71f8ab8cd4d4f6a2e4c",
+							"keyId": "03c2e0af2f8159f9f0ce9b5dbc865f10"
+						}
+					},
+					"label": "1"
+				},
+				{
+					"default": true,
+					"type": "mpd",
+					"file": "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd",
+					"drm": {
+						"widevine": {},
+						"playready": {}
+					},
+					"label": "2"
+				}
+			]
+		}
+	],
+	"primary": "html5",
+	"hlshtml": true,
+	"autostart": false
+} 
