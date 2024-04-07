@@ -1,22 +1,89 @@
 
-<html lang="en">
+<html>
 <head>
-    <title>Astro Cricket HD</title>
-    <meta charset="UTF-8">
-    <meta name="referrer" content="no-referrer">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
-    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <script src="/js/lmao.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/shaka-player/dist/controls.min.css" rel="stylesheet">
+
+<script>
+ const overlay = document.querySelector('.overlay');
+const button = document.querySelector('.toggle-button');
+
+button.addEventListener('click', () => {
+    overlay.classList.toggle('visible');
+});
+</script>
+<script src="../prodevs.js" defer></script>
+<script disable-devtool-auto='true' src=
+  'https://cdn.jsdelivr.net/npm/disable-devtool' clear-log='true'
+  disable-select='true' disable-copy='true' disable-cut='true'
+  disable-paste='true'></script>
+  <script>
+        //Display a pop-up message when the page starts
+        window.addEventListener("load", function () {
+            var result = window.confirm("Join @cricsters for more updates?");
+            if (result) {
+                window.location.href = "https://t.me/thecricsters";
+            }
+        });
+    </script>
+    <meta name="referrer" content="no-referrer" />
+    <title>Astro Cricket</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/controls.min.css" crossorigin="anonymous" />
+</script>
+<body bgcolor='black' style='margin:0'>
+</script>
+<style>
+   /* Overflow menu style */
+
+.shaka-overflow-menu {
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+}
+
+.shaka-overflow-menu button:hover {
+    background-color: rgb(45, 45, 45);
+}
+
+.shaka-overflow-button-label {
+    color: rgb(245, 245, 245);
+}
+
+.shaka-current-selection-span {
+    color: rgb(202, 202, 202);
+}
+
+.material-icons-round {
+    color: rgb(230, 230, 230);
+}
+
+/* Overflow sub menu style */
+
+.shaka-settings-menu {
+    background-color: rgb(35, 35, 35);
+    color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button {
+    color: rgb(255, 255, 255);
+}
+
+.shaka-settings-menu button:hover {
+    background-color: rgb(45, 45, 45);
+
+}
+
+.shaka-bottom-controls {
+  display: flex;
+  flex-direction: column-reverse;
+}
+    
+</style>
 </head>
-<body bgcolor='black' style='margin:0'> 
-<center>
- <div data-shaka-player-container style="width: 100%; height: 100%;">
-        <video poster="https://linear-poster.astro.com.my/prod/poster/ivp_default_10000229_IVP_LAND_586x330.jpg" autoplay data-shaka-player id="video" style="width: 100%; height: 100%;"></video>
-    </div>
+
+<body>
+    <center>
+            <div data-shaka-player-container style='width: 100%; height: 100%'>
+            <video autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video>
+        </div>
     </center>
     <script>
         const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd";
@@ -27,6 +94,15 @@
             const player = controls.getPlayer();
             window.player = player;
             window.ui = ui;
+            const config = {
+                 enableKeyboardPlaybackControls: true,
+                'seekBarColors': {
+                 base: 'rgba(255,255,255,.2)',
+                 buffered: 'rgba(255,255,255,.4)',
+                 played: 'rgb(255,0,0)',
+              },
+            };
+            ui.configure(config);
             player.configure({
                 drm: {
                     "clearKeys": {
@@ -34,6 +110,56 @@
                     }
                 }
             });
+            document.addEventListener('keydown', (e) => {
+            const videoContainer = document.querySelector('video');
+            let is_fullscreen = () => !!document.fullscreenElement
+            let audio_vol = video.volume;
+            if (e.key == 'f') {
+                if (is_fullscreen()) {
+                    document.exitFullscreen();
+                } else {
+                    videoContainer.requestFullscreen();
+                }
+                e.preventDefault();
+                }
+                else if (e.key == ' ') {
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                    e.preventDefault();
+                }
+                else if (e.key == "ArrowUp") {
+                    e.preventDefault();
+                    if (audio_vol != 1) {
+                        try {
+                            video.volume = audio_vol + 0.05;
+                        }
+                        catch (err) {
+                            video.volume = 1;
+                        }
+                    }
+                }
+                else if (e.key == "ArrowDown") {
+                    e.preventDefault();
+                    if (audio_vol != 0) {
+                        try {
+                            video.volume = audio_vol - 0.05;
+                        }
+                        catch (err) {
+                            video.volume = 0;
+                        }
+                    }
+                }
+
+               else if (e.key == 'm') {
+                    e.preventDefault();
+                    video.muted = !video.muted;
+                }
+                    
+            });
+
             player.addEventListener('error', onPlayerErrorEvent);
             controls.addEventListener('error', onUIErrorEvent);
             try {
@@ -42,15 +168,19 @@
             } catch (error) {
                 onPlayerError(error);
         }}
+
         function onPlayerErrorEvent(errorEvent) {
             onPlayerError(event.detail);
         }
+
         function onPlayerError(error) {
             console.error('Error code', error.code, 'object', error);
         }
+
         function onUIErrorEvent(errorEvent) {
             onPlayerError(event.detail);
         }
+
         function initFailed(errorEvent) {
             console.error('Unable to load the UI library!');
         }
@@ -58,4 +188,5 @@
         document.addEventListener('shaka-ui-load-failed', initFailed);
     </script>
 </body>
+
 </html>
