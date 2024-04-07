@@ -1,21 +1,25 @@
-<html>
-
-  <head>
-
-    <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.1.2/dist/shaka-player.ui.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/shaka-player@4.1.2/dist/controls.css">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Astro Cricket HD</title>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none';">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script src="/js/lmao.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/shaka-player/dist/controls.min.css" rel="stylesheet">
 </head>
-<body>
-
-      <video autoplay data-shaka-player poster="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRS02v1sIbCj8pSFwHV4TBnGPSTDTw2n_w3lA&usqp=CAU" id="video" style="width:100%;height:100%"></video>
-
-
-
-
- 
+<body bgcolor='black' style='margin:0'> 
+<center>
+ <div data-shaka-player-container style="width: 100%; height: 100%;">
+        <video poster="https://linear-poster.astro.com.my/prod/poster/ivp_default_10000229_IVP_LAND_586x330.jpg" autoplay data-shaka-player id="video" style="width: 100%; height: 100%;"></video>
+    </div>
+    </center>
     <script>
-        const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default.mpd";
+        const manifestUri = "https://linearjitp02-playback.astro.com.my/dash-wv/linear/2504/default_primary.mpd";
         async function init() {
             const video = document.getElementById('video');
             const ui = video['ui'];
