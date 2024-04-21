@@ -1,0 +1,46 @@
+if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href = "https://telegram.me/AK_LIVE_OFFICE" }
+
+ jwplayer("jwplayerDiv").setup({
+
+    controls: true,
+    displaytitle: true,
+    fullscreen: "true",
+    primary: 'html5',
+    stretching: "exactfit",
+    autostart: false,
+    "logo":    {
+        "file": "/images/play-logo.png",
+        "hide": false,
+        "link": "https://aklive.bio.link",
+        "margin": "20",
+        "position": 'top-left'
+    },
+
+  "playlist": [
+      {
+        "sources": [
+          {
+
+            "type": "mpd",
+            "file": "https://linear-novi.stvacdn.spectrum.com/LIVE/1131/dash/cenc/WLLOHD_10364/manifest.mpd",
+            "drm": {
+              "clearkey": {
+                "keyId": "6653c05e42fc4fac8f49d7cbf99498fe",
+                "key": "3b88f2cff3affef20b265c840bafc0cc"
+              }
+            },
+            "label": "0"
+          }
+        ],
+        image: "/images/play-cover.jpg",
+        title: "Willow HD",
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
+      }
+    ],
+
+    "image": "/images/play-cover.jpg"
+  }).on('ready', function () {
+    // Set poster image for video element to avoid black background for audio-only programs.
+    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+    if (video) video.setAttribute('poster', this.getConfig().image);
+  }); 
