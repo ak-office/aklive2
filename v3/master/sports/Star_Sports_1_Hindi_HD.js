@@ -1,1 +1,45 @@
-var _0xc26e=["","split","0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/","slice","indexOf","","",".","pow","reduce","reverse","0"];function _0xe92c(d,e,f){var g=_0xc26e[2][_0xc26e[1]](_0xc26e[0]);var h=g[_0xc26e[3]](0,e);var i=g[_0xc26e[3]](0,f);var j=d[_0xc26e[1]](_0xc26e[0])[_0xc26e[10]]()[_0xc26e[9]](function(a,b,c){if(h[_0xc26e[4]](b)!==-1)return a+=h[_0xc26e[4]](b)*(Math[_0xc26e[8]](e,c))},0);var k=_0xc26e[0];while(j>0){k=i[j%f]+k;j=(j-(j%f))/f}return k||_0xc26e[11]}eval(function(h,u,n,t,e,r){r="";for(var i=0,len=h.length;i<len;i++){var s="";while(h[i]!==n[e]){s+=h[i];i++}for(var j=0;j<n.length;j++)s=s.replace(new RegExp(n[j],"g"),j);r+=String.fromCharCode(_0xe92c(s,e,10)-t)}return decodeURIComponent(escape(r))}("XksXZsfXsZXkkkZXkskZXkffZsfsfZXkXfZsffXZkXkZkfXZXksXZsfXsZXkkkZXkskZXkffZsfsfZXkXfZsffXZXXfkZXksfZsfXXZkfXZksfZkkXZsffsZXkXfZsffkZsfXfZXkkkZkXkZsfssZskkZkXsZXkkkZsffXZXkXfZXkskZXkksZXkffZXkfkZkXsZXfsXZskkZkfXZXkffZsfXfZsffkZXkksZkfXZkskZskkZkXsZsffsZsffkZsffXZXkXfZsffkZXkfsZXkXkZXksfZXkkXZXkXsZkXsZXfsXZskkZkfXZXkXfZsfXkZXkffZXkfsZsffkZXkXXZXksfZsffkZkfXZkskZskkZkXsZsfXsZXksfZXkfkZsffkZXkXkZkXsZXfsXZskkZkfXZXfffZkkkZkkkZkXfZkfXZkskZskkZkXsZXkXkZXkXfZXksfZXkXsZXkXkZsffkZkXsZXfsXZskkZkfXZXffXZkkkZkkkZkfXZkskZskkZkXsZXksfZXkkfZXkffZXkXsZXkXfZkXsZXfsXZskkZkfXZkfXZkskZskkZkXsZXkskZXkksZXkXsZXkksZkXsZXfsXZskkZkfXZkfXZkskZskkZXkXXZXksfZXkskZXkXfZXfsXZskkZkfXZXkXkZsffkZsffkZXkkkZsffsZXfsXZkksZkksZXkkfZXkffZXkfkZXkkkZXkskZXkffZsfsfZkkXZXkskZXksfZsfXXZXkXfZkksZXkXkZXkskZsffsZkksZsffkZXkffZsffkZXkffZkksZXkkfZXkkkZXkfkZkkXZXkkkZXkXkZXkkkZXfksZXksfZXkfkZXfkfZXffXZXffkZkfXZkskZskkZsffkZsfsfZXkkkZXkXfZXfsXZskkZkfXZXkfkZXkffZsffsZXkXkZkfXZkskZskkZXkfkZsffXZXkkfZXfsXZskkZsfssZskkZkfXZXkfsZXkskZXkXfZXkffZsffXZXkssZXkXfZsfsfZkfXZXfsXZskkZsfssZskkZkfXZXkssZXkXfZsfsfZXXsfZXkfkZkfXZXfsXZkfXZXkffZXffXZXfsfZkkkZXfXXZXfXkZXkXXZXkXfZXfXXZXfXsZXfsfZXkXfZXfXfZXffkZXkfkZXkfsZXfsfZXfsfZXkfkZXffkZkkkZXkfXZXkfXZXkfXZXkfkZXkfkZXfXXZXfXXZXfsfZXkfkZXffsZXfXXZkfXZkskZkfXZXkssZXkXfZsfsfZkfXZXfsXZkfXZXfXsZXkfkZXfXsZXffXZXkfsZXffXZkkkZXffXZXfXXZXfffZXffkZXfXsZkkkZXfXfZXfXkZXfXXZXkfsZXkfXZXfXfZXkfkZXfsfZXfffZXffXZXkfsZXkfkZXkffZXkfkZXfsfZXkfkZXffsZkkkZXkXXZkfXZskkZsfkfZskkZsfkfZXsXZsfkfZksfZXfssZXsXZ",87,"fXskZVcwP",15,4,34))
+ jwplayer("jwplayerDiv").setup({
+
+    controls: true,
+    displaytitle: true,
+    fullscreen: "true",
+    primary: 'html5',
+    stretching: "exactfit",
+    autostart: false,
+    "logo":    {
+        "file": "/images/play-logo.png",
+        "hide": false,
+        "link": "https://aklive.bio.link",
+        "margin": "20",
+        "position": 'top-left'
+    },
+
+  "playlist": [
+      {
+        "sources": [
+          null,
+          {
+
+            "type": "dash",
+            "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd?begin=20240517T000000&end=20240531T160000",
+            "drm": {
+              "clearkey": {
+                "keyId": "52d365494fec5575b9315370a2ee4e15",
+                "key": "2ea411c299e2c3fea3add5de08501061"
+              }
+            },
+            "label": "0"
+          }
+        ],
+        image: "/images/play-cover.jpg",
+        title: "Star Sports 1 Hindi HD",
+        description: "Join Telegram Channel @AK_LIVE_OFFICE"
+      }
+    ],
+
+    "image": "/images/play-cover.jpg"
+  }).on('ready', function () {
+    // Set poster image for video element to avoid black background for audio-only programs.
+    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+    if (video) video.setAttribute('poster', this.getConfig().image);
+  }); 
