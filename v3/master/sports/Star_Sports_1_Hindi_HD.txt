@@ -1,3 +1,5 @@
+if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href = "https://telegram.me/AK_LIVE_OFFICE" }
+
  jwplayer("jwplayerDiv").setup({
 
     controls: true,
@@ -6,13 +8,6 @@
     primary: 'html5',
     stretching: "exactfit",
     autostart: false,
-    "logo":    {
-        "file": "/images/play-logo.png",
-        "hide": false,
-        "link": "https://aklive.bio.link",
-        "margin": "20",
-        "position": 'top-left'
-    },
 
   "playlist": [
       {
@@ -21,11 +16,11 @@
           {
 
             "type": "dash",
-            "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd",
+            "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd?begin=20240522T000000&end=20250531T160000",
             "drm": {
               "clearkey": {
-                "keyId": "1373b6e42b815fa7bb60a634a8f30ac4",
-                "key": "bd093ff30bc81ca92803cc888c66c138"
+                "keyId": "9022f7854ce650ab9fd8dc438df887fe",
+                "key": "d96c699267e638d7b26a2024f0f0ee43"
               }
             },
             "label": "0"
