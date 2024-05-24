@@ -19,8 +19,8 @@ if(confirm("Join Our Telegram Channel @AK_LIVE_OFFICE")) { window.location.href 
             "file": "https://bpprod5catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/manifest.mpd?begin=20240522T000000&end=20250531T160000",
             "drm": {
               "clearkey": {
-                "keyId": "9022f7854ce650ab9fd8dc438df887fe",
-                "key": "d96c699267e638d7b26a2024f0f0ee43"
+                "keyId": "a15ce1c01243568a95d7b18fb72a0537",
+                "key": "e0af3f6f04c259753f8767a13c2da61a"
               }
             },
             "label": "0"
