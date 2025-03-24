@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+  <script src="https://ipl-2023-schedule.pages.dev/playerjs.js" type="text/javascript"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  
+  <div id="player"></div>
+  <div id="player"></div>
+  <script src="https://cdn.jsdelivr.net/npm/cdnbye@latest"></script>
+  <script>
+ var urlParams = new URLSearchParams(window.location.search);
+      var aklive=urlParams.get('id'); 
+    var player = new Playerjs({
+        id:"player",
+        file: aklive,
+        hlsconfig: {
+            p2pConfig: {
+                live: true,        // set to false in VOD mode
+                // token: YOUR_TOKEN
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
