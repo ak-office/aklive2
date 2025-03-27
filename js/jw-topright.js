@@ -12,7 +12,7 @@
 var jwDefaults = {aboutlink:"https://aklive.bio.link",
 abouttext:"Join Telegram @AK_LIVE_OFFICE",
 aspectratio:"16:9",
-stretching:"uniform",
+stretching:"exactfit",
 width: "100%",
 autoPause:{viewability:!1},
 autostart: false,
