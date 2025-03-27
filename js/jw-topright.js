@@ -30,6 +30,6 @@ intl:{en:{related:{autoplaymessage:"",heading:"Catchups"}}},
 key:"cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=",
 pid:"KB5zFt7A",pipIcon:"enabled",playbackRateControls:!0,preload:"metadata",repeat:false,
 image: {file:"/images/play-cover.jpg",width: "100%",height: "100%"},
-logo: {file:"/images/play-logo.png",hide:!1, "margin": "20",link:"https://aklive.bio.link",position:"top-right"},
+logo: {file:"/images/play-logo2.png",hide:!1, "margin": "20",link:"https://aklive.bio.link",position:"top-right"},
 skin:{controlbar:{iconsActive:"#f2f200",text:"#FFFFFF"},menus:{textActive:"#f2f200"},timeslider:{progress:"#f2f200"}},width:"100%"
 };jwplayer.defaults=jwDefaults;
