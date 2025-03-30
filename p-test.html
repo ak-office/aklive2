@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+             
+  </style>
+    <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%
+    }
+  
+    #player {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000
+    }
+  
+    .jw-stats-item {
+      display: none;
+    }  body {
+      margin: 0px
+    }
+
+    .box-shadow {
+      width: 100%;
+      box-shadow: 9px 9px 8px #8c8c8c,
+        -29px -29px 58px #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+
+    }
+
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 30%;
+      max-height: 30%
+    }
+
+    #player p {
+      text-align: center;
+    }
+ .jw-icon-fullscreen path {
+      display: none;
+    }
+.jw-icon-fullscreen svg {
+  background-image: url('https://player.dtvxtream.com/icon/full-screen.svg');
+  background-size: cover;
+  background-position: center;
+  margin-left: 5px;
+}
+
+.jw-icon-fullscreen.jw-off svg {
+  background-image: url('https://player.dtvxtream.com/icon/full-screen-exit.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+ .jw-icon-pip path {
+      display: none;
+    }
+.jw-icon-pip svg {
+  background-image: url('https://player.dtvxtream.com/icon/pip-on.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.jw-icon-pip.jw-off svg {
+  background-image: url('https://player.dtvxtream.com/icon/pip-off.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+    .jw-svg-icon-rewind path {
+      display: none;
+    }
+
+    .jw-svg-icon-rewind {
+      background-image: url("https://player.dtvxtream.com/icon/icon.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .jw-icon-rewind:hover .jw-svg-icon-rewind {
+      background-image: url("https://player.dtvxtream.com/icon/icon.svg");
+    }
+
+
+
+
+
+    .jw-state-paused .jw-svg-icon-play path {
+      display: none;
+    }
+
+    .jw-state-paused .jw-svg-icon-play {
+      background-image: url("https://player.dtvxtream.com/icon/play.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .jw-state-paused .jw-icon-playback:hover .jw-svg-icon-play {
+      background-image: url("https://player.dtvxtream.com/icon/pause.svg");
+    }
+
+    .jw-svg-icon-pause path {
+      display: none;
+    }
+
+    .jw-svg-icon-pause {
+      background-image: url("https://player.dtvxtream.com/icon/pause.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .jw-svg-icon-buffer path {
+      display: none;
+    }
+
+    .jw-svg-icon-buffer {
+      background-image: url("https://player.dtvxtream.com/icon/buffer.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+
+    .jw-svg-icon-volume-100 path {
+      display: none;
+    }
+
+    .jw-svg-icon-volume-100 {
+      background-image: url("https://player.dtvxtream.com/icon/sound.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+        margin-right: 5px;
+
+    }
+
+    .jw-icon-volume:hover .jw-svg-icon-volume-100 {
+      background-image: url("https://player.dtvxtream.com/icon/sound.svg");
+        margin-right: 5px;
+
+    }
+
+    .jw-svg-icon-volume-0 path {
+      display: none;
+    }
+
+    .jw-svg-icon-volume-0 {
+      background-image: url("https://player.dtvxtream.com/icon/mute.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+        margin-right: 5px;
+
+    }
+
+    .jw-icon-volume:hover .jw-svg-icon-volume-0 {
+      background-image: url("https://player.dtvxtream.com/icon/mute.svg");
+        margin-right: 5px;
+
+    }
+
+    .jw-svg-icon-settings path {
+      display: none;
+    }
+
+    .jw-svg-icon-settings {
+
+      background-image: url("https://player.dtvxtream.com/icon/setting.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+  margin-left: 5px;
+
+
+    }
+
+    #player .jw-rightclick-link {
+      display: none;
+    }
+  </style>
+
+
+</head>
+
+<body>
+  <script src="https://ssl.p.jwpcdn.com/player/v/8.33.2/jwplayer.js"></script>
+  <div id="player"></div>
+  <script>
+   var urlParams = new URLSearchParams(window.location.search);
+     var filex = urlParams.get("aklive");
+     var file2 = "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8";
+     var thumb = urlParams.get('thumb')
+    var playerInstance = jwplayer('player');
+    playerInstance.setup({
+      width: "100%",
+      height: "100%",
+      key: "cLGMn8T20tGvW+0eXPhq4NNmLB57TrscPjd1IyJF84o=",
+      
+      image: thumb !== null && thumb !== undefined ? thumb : "https://iili.io/d5iVUu4.md.jpg",
+      sources: [
+        { 
+          
+          file: filex !== null && filex !== undefined ? filex : file2,/* type: "m3u8", label: "480p", default: "true"*/ },
+    //    { file: "https://cdn.fluidplayer.com/videos/valerian-720p.mkv", type: "mp4", label: "720p" },
+      //  { file: "https://cdn.fluidplayer.com/videos/valerian-1080p.mkv", type: "mp4", label: "1080p" }
+    ],
+ /*    sharing: {
+        heading: "Paylas",
+        link: "link-url",
+        sites: ["facebook", "twitter", "googleplus", "tumblr", "pinterest", "reddit", "linkedin", "email"]
+      },*/
+      primary: "html5"
+    });
+        // Add custom button
+    playerInstance.on('ready', function() {
+      playerInstance.addButton(
+        "zoom222222.svg", // Button icon URL
+        "Change Stretching", // Button tooltip text
+        function() {
+          // Cycle through the stretching modes
+          const currentStretching = playerInstance.getConfig().stretching;
+          const stretchingModes = ["uniform", "exactfit", "fill"];
+          const nextIndex = (stretchingModes.indexOf(currentStretching) + 1) % stretchingModes.length;
+          const nextStretching = stretchingModes[nextIndex];
+
+          // Update the player stretching mode
+          playerInstance.setConfig({
+            stretching: nextStretching
+          });
+
+       //   alert(`Stretching mode changed to: ${nextStretching}`);
+        },
+        "custom-button" // Button ID
+      );
+    });
+
+  </script>
+</body>
+
+</html>
