@@ -69,7 +69,9 @@
   
 <h5 class="header2"> IPL 2025 - M2  <i class="fa fa-caret-down" style="float:right;margin-bottom:13px;color:#999"></i>
 </h5>
-  <link rel="stylesheet" href="/css/jw.css">
+  
+
+<link rel="stylesheet" href="/css/jw.css">
 <script src="/js/jw-topright.js"></script>
 
 <style>
@@ -93,7 +95,7 @@
 
 <center>
   <div id="video-selector">
-  <label for="video-select" style="font-weight: bold; font-size: 15px; color: white; text-align: center;">Select Language : </label>
+  <label for="video-select" style="font-weight: bold; font-size: 15px; color: white; text-align: center;">Select Language & Stream : </label>
   <select id="video-select">
   <option value="hindi" selected>Hindi</option>
   <option value="english">English</option>
@@ -107,8 +109,21 @@
   <option value="bengali">Bengali</option>
   <option value="tamil">Tamil</option>
   <option value="telugu">Telugu</option>
+  <option value="hero_cam">Hero Cam</option>
+  <option value="batting_cam">Batting Cam</option>
+  <option value="bowling_cam">Bowling Cam</option>
+  <option value="multi_cam">Multi Cam</option>
+  <option value="spider_cam">Spider Cam</option>
   </select>
   </div>
+
+  <center>
+    <div style="display:inline-block">
+      <b><a href="https://telegram.me/AK_LIVE_OFFICE"><button class="btn-11 custom-btn"
+            style="width:70vw;height:40px;margin-top:10px;font-size:15px; font-family: 'Oswald', sans-serif">Join Our
+            Telegram Channel</button></a></b> </center> <br>
+
+  
   <div id="video"></div>
 
         <script type="text/javascript">
@@ -126,7 +141,12 @@
           "malayalam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Mal_IDC_MOB/Fallback/index.m3u8",
           "bengali": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_BEN_IDC_MOB/Fallback/index.m3u8",
           "tamil": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TAM_IDC_MOB/Fallback/index.m3u8",
-          "telugu": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TEL_IDC_MOB/Fallback/index.m3u8"
+          "telugu": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TEL_IDC_MOB/Fallback/index.m3u8",
+          "hero_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM06_IDC_MOB/Fallback/index.m3u8",
+          "batting_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM01_IDC_MOB/Fallback/index.m3u8",
+          "bowling_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM02_IDC_MOB/Fallback/index.m3u8",
+          "multi_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM03_IDC_MOB/Fallback/index.m3u8",
+          "spider_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM04_IDC_MOB/Fallback/index.m3u8"
         };
 
     var playerInstance = jwplayer("video");
@@ -145,9 +165,9 @@
     playerInstance.setup({
       autostart: false,
       width:"100%",
-      image: {file:"https://img10.hotstar.com/image/upload/sources/r1/cms/prod/8763/1739203338763-a.jpg"},
+      image: {file:"/images/play-cover.jpg"},
       mute: false,
-      image: "https://img10.hotstar.com/image/upload/sources/r1/cms/prod/8763/1739203338763-a.jpg",
+      image: "/images/play-cover.jpg",
       playlist: [{ file: videoSource }]
       
 }).on('ready', function() {
