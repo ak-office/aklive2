@@ -67,6 +67,12 @@
 
 <title>IPL 2025 - M2 </title>
   
+  <center>
+    <div style="display:inline-block">
+      <b><a href="https://telegram.me/AK_LIVE_OFFICE"><button class="btn-11 custom-btn"
+            style="width:70vw;height:40px;margin-top:10px;font-size:15px; font-family: 'Oswald', sans-serif">Join Our
+            Telegram Channel</button></a></b> </center>
+  
 <h5 class="header2"> IPL 2025 - M2  <i class="fa fa-caret-down" style="float:right;margin-bottom:13px;color:#999"></i>
 </h5>
   
@@ -116,65 +122,68 @@
   <option value="spider_cam">Spider Cam</option>
   </select>
   </div>
-
-  <center>
-    <div style="display:inline-block">
-      <b><a href="https://telegram.me/AK_LIVE_OFFICE"><button class="btn-11 custom-btn"
-            style="width:70vw;height:40px;margin-top:10px;font-size:15px; font-family: 'Oswald', sans-serif">Join Our
-            Telegram Channel</button></a></b> </center> <br>
-
   
   <div id="video"></div>
 
-        <script type="text/javascript">
-        
-        document.addEventListener("DOMContentLoaded", function() {
-        var videoSources = {
-          "hindi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_HIN_IDC_MOB/Fallback/index.m3u8",
-          "english": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_ENG_IDC_MOB/Fallback/index.m3u8",
-          "haryanvi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_HAR_IDC_MOB/Fallback/index.m3u8",
-          "bhojpuri": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Bhoj_IDC_MOB/Fallback/index.m3u8",
-          "gujarati": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Guj_IDC_MOB/Fallback/index.m3u8",
-          "punjabi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Punj_IDC_MOB/Fallback/index.m3u8",
-          "kannada": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_KAN_IDC_MOB/Fallback/index.m3u8",
-          "marathi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_MAR_IDC_MOB/Fallback/index.m3u8",
-          "malayalam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Mal_IDC_MOB/Fallback/index.m3u8",
-          "bengali": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_BEN_IDC_MOB/Fallback/index.m3u8",
-          "tamil": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TAM_IDC_MOB/Fallback/index.m3u8",
-          "telugu": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TEL_IDC_MOB/Fallback/index.m3u8",
-          "hero_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM06_IDC_MOB/Fallback/index.m3u8",
-          "batting_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM01_IDC_MOB/Fallback/index.m3u8",
-          "bowling_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM02_IDC_MOB/Fallback/index.m3u8",
-          "multi_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM03_IDC_MOB/Fallback/index.m3u8",
-          "spider_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM04_IDC_MOB/Fallback/index.m3u8"
-        };
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get thumbnail from URL parameters
+    var urlParams = new URLSearchParams(window.location.search);
+    var thumb = urlParams.get('thumb');
 
-    var playerInstance = jwplayer("video");
-
-    document.getElementById("video-select").addEventListener("change", function() {
-      var selectedValue = this.value;
-      var videoSource = videoSources[selectedValue];
-
-      playerInstance.load([{ file: videoSource }]);
-      playerInstance.play();
-    });
+    var videoSources = {
+        "hindi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_HIN_IDC_MOB/Fallback/index.m3u8",
+        "english": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_ENG_IDC_MOB/Fallback/index.m3u8",
+        "haryanvi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_HAR_IDC_MOB/Fallback/index.m3u8",
+        "bhojpuri": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Bhoj_IDC_MOB/Fallback/index.m3u8",
+        "gujarati": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Guj_IDC_MOB/Fallback/index.m3u8",
+        "punjabi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Punj_IDC_MOB/Fallback/index.m3u8",
+        "kannada": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_KAN_IDC_MOB/Fallback/index.m3u8",
+        "marathi": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_MAR_IDC_MOB/Fallback/index.m3u8",
+        "malayalam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_Mal_IDC_MOB/Fallback/index.m3u8",
+        "bengali": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_BEN_IDC_MOB/Fallback/index.m3u8",
+        "tamil": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TAM_IDC_MOB/Fallback/index.m3u8",
+        "telugu": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_TEL_IDC_MOB/Fallback/index.m3u8",
+        "hero_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM06_IDC_MOB/Fallback/index.m3u8",
+        "batting_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM01_IDC_MOB/Fallback/index.m3u8",
+        "bowling_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM02_IDC_MOB/Fallback/index.m3u8",
+        "multi_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM03_IDC_MOB/Fallback/index.m3u8",
+        "spider_cam": "https://prod-ent-live-gm.jiocinema.com/bpk-tv/JS_M2_IPL25_CAM04_IDC_MOB/Fallback/index.m3u8"
+    };
 
     var selectedValue = document.getElementById("video-select").value;
-    var videoSource = videoSources[selectedValue];
-    
-    playerInstance.setup({
-      autostart: false,
-      width:"100%",
-      image: {file:"/images/play-cover.jpg"},
-      mute: false,
-      image: "/images/play-cover.jpg",
-      playlist: [{ file: videoSource }]
+    var videoSource = videoSources[selectedValue] || videoSources["hindi"];
+
+    jwplayer("video").setup({
+        
+        "playlist": [{
+            "sources": [{
+                "file": videoSource,
+                "type": "hls" 
+            }],
+            image: thumb !== null && thumb !== undefined ? thumb : "/images/play-cover.jpg"
+        }],
+        "image": thumb !== null && thumb !== undefined ? thumb : "/images/play-cover.jpg"
       
-}).on('ready', function() {
-    var video = document.getElementById(this.id).getElementsByTagName('video')[0];
-    if (video) video.setAttribute('poster', this.getConfig().image);
+    }).on('ready', function() {
+        var video = document.getElementById(this.id).getElementsByTagName('video')[0];
+        if (video) video.setAttribute('poster', this.getConfig().image);
     });
-  });
+
+    document.getElementById("video-select").addEventListener("change", function() {
+        var selectedValue = this.value;
+        var videoSource = videoSources[selectedValue];
+
+        jwplayer("video").load([{
+            "sources": [{
+                "file": videoSource,
+                "type": "hls"
+            }],
+        }]);
+        jwplayer("video").play();
+ 
+    }); 
+});
 </script> </center>
 
   <br> </br> 
