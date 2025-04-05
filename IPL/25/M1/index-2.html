@@ -161,9 +161,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 "file": videoSource,
                 "type": "hls" 
             }],
-            image: thumb !== null && thumb !== undefined ? thumb : "images/play-cover.jpg"
+            image: thumb !== null && thumb !== undefined ? thumb : "/images/play-cover.jpg"
         }],
-        "image": thumb !== null && thumb !== undefined ? thumb : "images/play-cover.jpg"
+        "image": thumb !== null && thumb !== undefined ? thumb : "/images/play-cover.jpg"
       
     }).on('ready', function() {
         var video = document.getElementById(this.id).getElementsByTagName('video')[0];
