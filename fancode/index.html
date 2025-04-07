@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancode Live Matches</title>
+    <style>
+        /* Bingewav Sports Logo Section */
+        .logo-container {
+            background: #000;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container img {
+            width: 220px;
+            height: auto;
+        }
+        
+        :root {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --card-bg: #1e1e1e;
+            --card-shadow: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .match-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .match-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .match-card:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px var(--card-shadow);
+        }
+
+        .match-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .match-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .match-subtitle {
+            font-size: 14px;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .watch-button {
+            width: 140px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(to right,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a);
+            background-size: 250%;
+            background-position: left;
+            color: #ffd277;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition-duration: 1s;
+            overflow: hidden;
+        }
+
+        .watch-button::before {
+            position: absolute;
+            color: #ffd277;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 97%;
+            height: 90%;
+            border-radius: 8px;
+            transition-duration: 1s;
+            background-color: rgba(0, 0, 0, 0.842);
+            background-size: 200%;
+        }
+
+        .watch-button.watch::before {
+            content: "Watch";
+        }
+
+        .watch-button.adfree::before {
+            content: "Ad-free";
+        }
+
+        .watch-button:hover::before {
+            background-position: right;
+            transition-duration: 1s;
+        }
+
+        .watch-button:hover {
+            background-position: right;
+            transition-duration: 1s;
+        }
+
+        .watch-button:active {
+            transform: scale(0.95);
+        }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .popup-content h2 {
+            margin: 0 0 10px;
+            color: #ff0000;
+        }
+
+        .popup-content p {
+            margin: 0 0 20px;
+        }
+
+        .popup-content button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup-content .join-btn {
+            background-color: #ff0000;
+            color: white;
+        }
+
+        .popup-content .close-btn {
+            background-color: #555;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="https://i.ibb.co/XZBBsR7/Fan-Code-Logo-2022-Fan-Code-Orange-On-Transarent.png" alt="Fancode">
+    </div>
+    <h1>Fancode Live Matches</h1>
+    <div class="match-container" id="matches"></div>
+
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Support Us!</h2>
+            <p>Join our Telegram channel @Shwetank_Singh for more updates.</p>
+            <button class="join-btn" onclick="window.open('https://telegram.me/AK_LIVE_OFFICE', '_blank')">Join Now</button>
+            <button class="close-btn" onclick="closePopup()">Already Joined</button>
+        </div>
+    </div>
+
+    <script>
+        async function fetchMatches() {
+            const response = await fetch('https://raw.githubusercontent.com/drmlive/fancode-live-events/main/fancode.json');
+            const data = await response.json();
+            const matchesContainer = document.getElementById('matches');
+            
+            data.matches.forEach(match => {
+                const matchCard = document.createElement('div');
+                matchCard.className = 'match-card';
+                matchCard.innerHTML = `
+                    <img src="${match.src}" alt="Match Image">
+                    <div class="match-title">${match.title}</div>
+                    <div class="match-subtitle">${match.event_category}</div>
+                    ${match.status === "LIVE" ? `
+                        <div class="button-container">
+                            <button class="watch-button watch" onclick="redirect('${match.match_id}', false)"></button>
+                            <button class="watch-button adfree" onclick="redirect('${match.match_id}', true)"></button>
+                        </div>
+                    ` : `<p>Starts at: ${match.startTime}</p>`}
+                `;
+                matchesContainer.appendChild(matchCard);
+            });
+        }
+
+        function redirect(matchId, adfree) {
+            const url = `./match?id=${matchId}${adfree ? '&adfree' : ''}`;
+            window.location.href = url;
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        window.onload = function () {
+            setTimeout(() => {
+                document.getElementById("popup").style.display = "flex";
+            }, 3000);
+        };
+
+        fetchMatches();
+    </script>
+
+    <footer>
+        &copy; 2025 AK-LIVE  |   All rights reserved.
+    </footer>
+</body>
+</html>
