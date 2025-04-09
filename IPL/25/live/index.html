@@ -36,13 +36,13 @@
         const matchId = urlParams.get('id');
         const adFree = urlParams.has('adfree');
 
-        let fileToPlay = "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6242e1f65302d5b9d2f5e/main.m3u8"; 
+        let fileToPlay = "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6c6381f65302d5ba27140/main.m3u8"; 
         let pageTitle = "Stream Not Found"; // Default title
-        let thumbnailUrl = "https://i.ibb.co/LDrXBNGc/Stream-Not-Found.jpg"; // Default thumbnail URL
+        let thumbnailUrl = "https://i.ibb.co/whW6c24v/aklive-stream-not-found.jpg"; // Default thumbnail URL
 
         if (matchId) {
             try {
-                const response = await fetch("https://pb.oii.im/~csk");
+                const response = await fetch("https://pb.oii.im/~css");
                 const data = await response.json();
                 const match = data.find(m => m.id === matchId); // Changed match_id to id
 
