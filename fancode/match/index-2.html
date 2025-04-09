@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Match</title>
+    <title> Fancode Live - AK lIVE </title>
+
    <link rel="stylesheet" href="/css/jw.css">
    <script src="/js/jw-topright.js"></script>
     <style>
@@ -24,57 +25,6 @@
             max-height: 100%;
         }
 
-    #popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .popup-content {
-      background-color: #222;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      width: 300px;
-    }
-
-    .popup-content h2 {
-      margin: 0 0 10px;
-      color: #ff0000;
-    }
-
-    .popup-content p {
-      margin: 0 0 20px;
-    }
-
-    .popup-content button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .popup-content .join-btn {
-      background-color: #ff0000;
-      color: white;
-    }
-
-    .popup-content .close-btn {
-      background-color: #555;
-      color: white;
-    }
     </style>
 </head>
 <body>
@@ -86,7 +36,7 @@ async function fetchMatchData() {
     const matchId = urlParams.get('id');
     const adFree = urlParams.has('adfree');
 
-    let fileToPlay = "https://video.gumlet.io/6787f1fa5bdf3d7d16d363ca/679b961644d70d0c829583e4/main.m3u8"; 
+    let fileToPlay = "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6242e1f65302d5b9d2f5e/main.m3u8"; 
 
     if (matchId) {
         try {
@@ -146,15 +96,6 @@ function closePopup() {
     </script>
 
 
-  <div id="popup">
-    <div class="popup-content">
-      <h2>Support Us!</h2>
-      <p>Join our Telegram channel @AK_LIVE_OFFICE for more updates.</p>
-      <button class="join-btn" onclick="window.open('https://telegram.me/AK_LIVE_OFFICE', '_blank')">Join Now</button>
-      <button class="close-btn" onclick="closePopup()">Already Joined</button>
-    </div>
-  </div>
-
 <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 
     <script>
@@ -171,5 +112,6 @@ function closePopup() {
           // Close the alert if 'Cancel' is clicked (do nothing)
       }
     </script>
+
 </body>
 </html>
