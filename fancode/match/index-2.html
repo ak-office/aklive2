@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Fancode Live - AK LIVE </title>
+    <title> Stream Not Found - AK LIVE </title>
 
    <link rel="stylesheet" href="/css/jw.css">
    <script src="/js/jw-topright.js"></script>
@@ -31,72 +31,84 @@
     <div id="jwplayerDiv"></div>
 
     <script>
-async function fetchMatchData() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const matchId = urlParams.get('id');
-    const adFree = urlParams.has('adfree');
+        async function fetchMatchData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const matchId = urlParams.get('id');
+            const adFree = urlParams.has('adfree');
 
-    let fileToPlay = "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6242e1f65302d5b9d2f5e/main.m3u8"; 
+            let fileToPlay = "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6242e1f65302d5b9d2f5e/main.m3u8"; 
+            let pageTitle = "Stream Not Found"; // Default title
+            let thumbnailUrl = "https://i.ibb.co/LDrXBNGc//Stream-Not-Found.jpg"; // Default thumbnail URL
 
-    if (matchId) {
-        try {
-            const response = await fetch("https://raw.githubusercontent.com/drmlive/fancode-live-events/main/fancode.json");
-            const data = await response.json();
-            const match = data.matches.find(m => m.match_id == matchId);
+            if (matchId) {
+                try {
+                    const response = await fetch("https://raw.githubusercontent.com/drmlive/fancode-live-events/main/fancode.json");
+                    const data = await response.json();
+                    const match = data.matches.find(m => m.match_id == matchId);
 
-            if (match) {
-                fileToPlay = adFree && match.adfree_url ? match.adfree_url : match.dai_url;
+                    if (match) {
+                        fileToPlay = adFree && match.adfree_url ? match.adfree_url : match.dai_url;
+                        // Set page title from match data
+                        pageTitle = match.title ;
+                        // Set thumbnail URL (adjust field name based on your JSON structure)
+                        thumbnailUrl = match.src ;
+                        // Update document title
+                        document.title = pageTitle;
+                    }
+                } catch (error) {
+                    console.error("Error fetching match data:", error);
+                }
+            } else {
+                // Set default title if no matchId
+                document.title = pageTitle;
             }
-        } catch (error) {
-            console.error("Error fetching match data:", error);
+
+            // Initialize JW Player
+            const playerInstance = jwplayer("jwplayerDiv").setup({
+                file: fileToPlay,
+                autostart: false,
+                stretching: "uniform",
+                width: "100%",
+                height: "100%",
+                type: "dash",
+                description: pageTitle,
+                title: "𝗔𝗞 𝗟𝗜𝗩𝗘",
+                image: thumbnailUrl // Add thumbnail image to player config
+            });
+
+            // Add custom button when player is ready
+            playerInstance.on('ready', function() {
+                playerInstance.addButton(
+                    "/images/icon/stretch.svg",
+                    "Change Stretching",
+                    function() {
+                        const currentStretching = playerInstance.getConfig().stretching;
+                        const stretchingModes = ["uniform", "exactfit", "fill"];
+                        const nextIndex = (stretchingModes.indexOf(currentStretching) + 1) % stretchingModes.length;
+                        const nextStretching = stretchingModes[nextIndex];
+
+                        playerInstance.setConfig({
+                            stretching: nextStretching
+                        });
+                    },
+                    "custom-button"
+                );
+            });
         }
-    }
 
-    // Initialize JW Player
-    const playerInstance = jwplayer("jwplayerDiv").setup({
-        file: fileToPlay,
-        autostart: true,
-        stretching: "uniform",
-        width: "100%",
-        height: "100%",
-        type: "dash"
-    });
+        fetchMatchData();
 
-    // Add custom button when player is ready
-    playerInstance.on('ready', function() {
-        playerInstance.addButton(
-            "/images/icon/stretch.svg", // Button icon URL
-            "Change Stretching", // Button tooltip text
-            function() {
-                // Cycle through the stretching modes
-                const currentStretching = playerInstance.getConfig().stretching;
-                const stretchingModes = ["uniform", "exactfit", "fill"];
-                const nextIndex = (stretchingModes.indexOf(currentStretching) + 1) % stretchingModes.length;
-                const nextStretching = stretchingModes[nextIndex];
-
-                // Update the player stretching mode
-                playerInstance.setConfig({
-                    stretching: nextStretching
-                });
-
-                // alert(`Stretching mode changed to: ${nextStretching}`);
-            },
-            "custom-button" // Button ID
-        );
-    });
-}
-
-fetchMatchData();
-
-// Close popup function
-function closePopup() {
-    const popup = document.getElementById('popup');
-    popup.style.display = 'none';
-}
+        // Close popup function
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
     </script>
 
 
-<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+    <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+
+    <script> <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
 
     <script>
        // Close popup function
