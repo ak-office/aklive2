@@ -42,7 +42,7 @@
 
         if (matchId) {
             try {
-                const response = await fetch("https://raw.githubusercontent.com/drmlive/fancode-live-events/main/fancode.json");
+                const response = await fetch("https://pb.oii.im/~csk");
                 const data = await response.json();
                 const match = data.find(m => m.id === matchId); // Changed match_id to id
 
