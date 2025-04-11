@@ -136,7 +136,18 @@
             <button class="close-btn" onclick="closePopup()">Already Joined</button>
         </div>
     </div>
+<script>
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
 
+        window.onload = function () {
+            fetchChannels();
+            setTimeout(() => {
+                document.getElementById('popup').style.display = 'flex';
+            }, 3000);
+        };
+</script>
 
      <h5 class="header3" style="text-align: center;"><b>Welcome to AK LIVE </b><i class="fa fa-caret" style="margin-bottom:10px;color:#999"></i></h5>
 
