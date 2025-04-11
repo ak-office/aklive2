@@ -105,7 +105,7 @@
         id: "default",
         title: "Default Video",
         url: "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6c6381f65302d5ba27140/main.m3u8",
-        logo: "https://i.ibb.co/whW6c24v/aklive-stream-not-found.jpg", // Use empty or set a specific logo URL if needed
+        poster: "https://i.ibb.co/whW6c24v/aklive-stream-not-found.jpg", // Use empty or set a specific poster URL if needed
         subtitles: [],
         controls: [
           "play",
@@ -132,8 +132,8 @@
 
       // Set document title and metadata
       document.title = stream.title || "Video Player";
-      if (stream.logo) {
-        video.setAttribute("logo", stream.logo);
+      if (stream.poster) {
+        video.setAttribute("poster", stream.poster);
       }
 
       // Add subtitles if provided
