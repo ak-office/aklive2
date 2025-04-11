@@ -74,80 +74,7 @@
 
 
   <center>
-<style>
-      #popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
 
-        .popup-content {
-            background-color: #222;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-        }
-
-        .popup-content h2 {
-            margin: 0 0 10px;
-            color: #42CDE7;
-        }
-
-        .popup-content p {
-            margin: 0 0 20px;
-        }
-
-        .popup-content button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .popup-content .join-btn {
-            background-color: #007BCB;
-            color: white;
-        }
-
-        .popup-content .close-btn {
-            background-color: #555;
-            color: white;
-        }
-</style>
-
-    <div id="popup">
-        <div class="popup-content">
-            <h2>Support Us!</h2>
-            <p>Join our Telegram channel @AK_LIVE_OFFICE for more updates</p>
-            <button class="join-btn" onclick="window.open('https://telegram.me/AK_LIVE_OFFICE', '_blank')">Join Now</button>
-            <button class="close-btn" onclick="closePopup()">Already Joined</button>
-        </div>
-    </div>
-<script>
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        window.onload = function () {
-            fetchChannels();
-            setTimeout(() => {
-                document.getElementById('popup').style.display = 'flex';
-            }, 3000);
-        };
-</script>
 
      <h5 class="header3" style="text-align: center;"><b>Welcome to AK LIVE </b><i class="fa fa-caret" style="margin-bottom:10px;color:#999"></i></h5>
 
@@ -244,7 +171,7 @@
 
         </b></b>
 
-      <!--------  <style media="screen">
+  <style media="screen">
           .popup {
             z-index: 9999999;
             background-color: #fff;
@@ -338,7 +265,7 @@
             document.querySelector("#close").addEventListener("click", function () {
               document.querySelector(".popup").style.display = "none";
             });
-          </script>  ------->
+          </script> 
 
         </body>
 
