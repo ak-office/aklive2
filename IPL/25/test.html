@@ -6,12 +6,39 @@
   <title>Video Player</title>
   <!-- Plyr CSS -->
   <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet">
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+
+            :root {
+                --plyr-color-main: #949602;
+            }
+        </style>
   <style>
-    /* Center the player and make it responsive */
-    .player-container {
-      width: 100%;
-      background: #f9f9f9;
-    }
+            html, body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                background: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
     /* Video description styling */
     .video-description {
       margin-top: 10px;
@@ -30,11 +57,20 @@
       width: 100%;
       height: 100%;
     }
+
+            video {
+                width: 100%;
+                height: 100%;
+            }
+
+            :root {
+                --plyr-color-main: #949602;
+            }
   </style>
 </head>
 <body>
   <!-- Container for the player -->
-  <div id="player-container" class="player-container">
+  <div id="player">
     <video id="player" controls playsinline></video>
   </div>
 
