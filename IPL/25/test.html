@@ -21,6 +21,12 @@
       width: 100%;
       height: 100%;
     }
+
+    .plyr {
+      width: 100%;
+      height: 100%;
+            }
+
     .video-description {
       position: absolute;
       bottom: 10px;
@@ -102,7 +108,6 @@
         poster: "https://i.ibb.co/whW6c24v/aklive-stream-not-found.jpg", // Use empty or set a specific poster URL if needed
         subtitles: [],
         controls: [
-          "play-large",
           "play",
           "progress",
           "current-time",
@@ -157,7 +162,6 @@
       // Default Plyr options
       const defaultOptions = {
         controls: stream.controls || [
-          "play-large",
           "play",
           "progress",
           "current-time",
@@ -168,8 +172,6 @@
           "pip",
           "fullscreen"
         ],
-        settings: stream.subtitles?.length > 0 ? ["quality", "captions", "speed", "loop"] : ["quality", "speed", "loop"],
-        captions: { active: stream.subtitles?.length > 0, language: stream.subtitles?.[0]?.lang || stream.subtitles?.[0]?.srclang || "auto" }
       };
 
       if (!Hls.isSupported()) {
