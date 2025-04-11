@@ -13,13 +13,13 @@
       width: 100%;
       height: 100%;
       background: #000;
-      overflow: hidden; /* Prevent scrollbars */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: contain; /* Ensure video fits without cropping */
-      display: block;
+      width: 100%;
+      height: 100%;
     }
     .video-description {
       position: absolute;
@@ -35,23 +35,8 @@
       max-width: 90%;
       text-align: center;
     }
-    .error-message {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #ff5555;
-      font-size: 18px;
-      font-weight: bold;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 10px 20px;
-      border-radius: 5px;
-      z-index: 20; /* Above all elements */
-      text-align: center;
-      max-width: 90%;
-    }
     :root {
-      --plyr-color-main: #949602; /* Custom Plyr theme color */
+      --plyr-color-main: #c90083; /* Custom Plyr theme color */
     }
   </style>
 </head>
@@ -69,44 +54,6 @@
         window.location.href = "https://t.me/AK_LIVE_OFFICE";
       }
     }, 1000);
-
-    // Check for required URL parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    if (!urlParams.has("id")) {
-      document.title = "Error: Missing ID";
-      showError("Missing required ID parameter");
-      throw new Error("Missing required parameter");
-    }
-
-    // Fetch media playlist from API
-    async function fetchPlaylist() {
-      try {
-        const response = await fetch("https://pb.oii.im/~aklive");
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return await response.json();
-      } catch (error) {
-        console.error("Fetch error:", error);
-        showError("Failed to load playlist. Please try again later.");
-        return [];
-      }
-    }
-
-    // Get ID from URL parameters
-    function getStreamId() {
-      return urlParams.get("id");
-    }
-
-    // Display error message in the UI
-    function showError(message) {
-      const existingError = document.querySelector(".error-message");
-      if (existingError) existingError.remove(); // Remove previous errors
-      const errorDiv = document.createElement("div");
-      errorDiv.className = "error-message";
-      errorDiv.textContent = message;
-      document.body.appendChild(errorDiv);
-    }
 
     // Update quality selection
     function updateQuality(newQuality, hls) {
@@ -127,16 +74,26 @@
     document.addEventListener("DOMContentLoaded", async () => {
       const video = document.getElementById("video-player");
 
-      // Fetch playlist and find stream
-      const playlist = await fetchPlaylist();
-      const streamId = getStreamId();
-      const stream = playlist.find(item => item.id === streamId);
-
-      if (!stream) {
-        console.error("Stream not found");
-        showError("Stream not found. Please check the ID or try again.");
-        return;
-      }
+      // Hardcoded stream data
+      const stream = {
+        url: "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6c6381f65302d5ba27140/main.m3u8",
+        title: "Video Player",
+        description: "", // Add description if needed
+        poster: "", // Add poster URL here if available
+        subtitles: [], // Add subtitles if needed
+        controls: [
+          "play-large",
+          "play",
+          "progress",
+          "current-time",
+          "mute",
+          "volume",
+          "captions",
+          "settings",
+          "pip",
+          "fullscreen"
+        ]
+      };
 
       // Set document title and metadata
       document.title = stream.title || "Video Player";
@@ -149,7 +106,7 @@
         stream.subtitles.forEach(sub => {
           const track = document.createElement("track");
           track.kind = sub.kind || "subtitles";
-          track.src = sub.src || sub.file; // Support src or file
+          track.src = sub.src || sub.file;
           track.label = sub.label || "Unnamed";
           track.srclang = sub.lang || sub.srclang || "en";
           if (sub.default) {
@@ -169,18 +126,7 @@
 
       // Default Plyr options
       const defaultOptions = {
-        controls: stream.controls || [
-          "play-large",
-          "play",
-          "progress",
-          "current-time",
-          "mute",
-          "volume",
-          "captions",
-          "settings",
-          "pip", // Added Picture-in-Picture
-          "fullscreen"
-        ],
+        controls: stream.controls,
         settings: stream.subtitles?.length > 0 ? ["quality", "captions", "speed", "loop"] : ["quality", "speed", "loop"],
         captions: { active: stream.subtitles?.length > 0, language: stream.subtitles?.[0]?.lang || stream.subtitles?.[0]?.srclang || "auto" }
       };
@@ -268,13 +214,6 @@
                 });
               }
             });
-          }
-        });
-
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          if (data.fatal) {
-            console.error("HLS error:", data);
-            showError("Failed to load stream. Please check your connection or try again.");
           }
         });
 
