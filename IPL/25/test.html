@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Player</title>
+  <!-- Plyr CSS -->
+  <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet">
+  <style>
+    /* Center the player and make it responsive */
+    .player-container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    /* Video description styling */
+    .video-description {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+    /* Error message styling */
+    .error-message {
+      color: red;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    /* Ensure video fills container */
+    #player {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container for the player -->
+  <div id="player-container" class="player-container">
+    <video id="player" controls playsinline></video>
+  </div>
+
+  <!-- Hls.js and Plyr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15"></script>
+  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script>
+    // Prompt user to join Telegram channel (non-blocking)
+    setTimeout(() => {
+      if (confirm("Join our Telegram Channel @AK_LIVE_OFFICE?")) {
+        window.location.href = "https://telegram.me/AK_LIVE_OFFICE";
+      }
+    }, 1000);
+
+    // Check for required URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has("id")) {
+      document.title = "Error: Missing ID";
+      showError("Missing required parameter: ID");
+      throw new Error("Missing required parameter");
+    }
+
+    // Fetch media playlist from API
+    async function fetchPlaylist() {
+      try {
+        const response = await fetch("https://pb.oii.im/~aklive");
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return await response.json();
+      } catch (error) {
+        console.error("Fetch error:", error);
+        showError("Failed to load playlist. Please try again later.");
+        return [];
+      }
+    }
+
+    // Get ID from URL parameters
+    function getStreamId() {
+      return urlParams.get("id");
+    }
+
+    // Display error message in the UI
+    function showError(message) {
+      const container = document.getElementById("player-container");
+      container.innerHTML = `<div class="error-message">${message}</div>`;
+    }
+
+    // Update quality selection
+    function updateQuality(newQuality, hls) {
+      if (newQuality === 0) {
+        hls.currentLevel = -1; // Enable auto quality
+        console.log("Switched to Auto");
+      } else {
+        hls.levels.forEach((level, levelIndex) => {
+          if (level.height === newQuality) {
+            console.log(`Switching to quality: ${newQuality}p`);
+            hls.currentLevel = levelIndex;
+          }
+        });
+      }
+    }
+
+    // Set up player
+    document.addEventListener("DOMContentLoaded", async () => {
+      const video = document.getElementById("player");
+      const container = document.getElementById("player-container");
+
+      // Fetch playlist and find stream
+      const playlist = await fetchPlaylist();
+      const streamId = getStreamId();
+      const stream = playlist.find(item => item.id === streamId);
+
+      if (!stream) {
+        console.error("Stream not found");
+        showError("Stream not found. Please check the ID or try again.");
+        return;
+      }
+
+      // Set document title and metadata
+      document.title = stream.title || "Video Player";
+      if (stream.poster) {
+        video.setAttribute("poster", stream.poster);
+      }
+
+      // Add subtitles if provided
+      if (stream.subtitles && Array.isArray(stream.subtitles)) {
+        stream.subtitles.forEach(sub => {
+          const track = document.createElement("track");
+          track.kind = "subtitles";
+          track.src = sub.src;
+          track.label = sub.label;
+          track.srclang = sub.lang;
+          if (sub.default) {
+            track.default = true;
+          }
+          video.appendChild(track);
+        });
+      }
+
+      // Display description if provided
+      if (stream.description) {
+        const descElement = document.createElement("div");
+        descElement.className = "video-description";
+        descElement.textContent = stream.description;
+        container.appendChild(descElement);
+      }
+
+      // Default Plyr options
+      const defaultOptions = {
+        controls: stream.controls || [
+          "play-large",
+          "play",
+          "progress",
+          "current-time",
+          "mute",
+          "volume",
+          "captions",
+          "settings",
+          "fullscreen"
+        ],
+        settings: stream.subtitles?.length > 0 ? ["quality", "captions", "speed", "loop"] : ["quality", "speed", "loop"],
+        captions: { active: stream.subtitles?.length > 0, language: stream.subtitles?.[0]?.lang || "auto" }
+      };
+
+      if (!Hls.isSupported()) {
+        // Fallback for non-HLS support
+        const sourceElement = document.createElement("source");
+        sourceElement.src = stream.url;
+        video.appendChild(sourceElement);
+        new Plyr(video, defaultOptions);
+      } else {
+        // Initialize HLS.js with custom header
+        const hls = new Hls({
+          xhrSetup: (xhr) => {
+            xhr.setRequestHeader("x-token-platform", "web");
+          }
+        });
+
+        hls.loadSource(stream.url);
+
+        // Handle manifest parsing
+        hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
+          const availableQualities = hls.levels.map(l => l.height);
+          availableQualities.unshift(0); // Add 0 for Auto
+
+          // Configure Plyr quality options
+          defaultOptions.quality = {
+            default: 0, // Auto by default
+            options: availableQualities,
+            forced: true,
+            onChange: (newQuality) => updateQuality(newQuality, hls)
+          };
+
+          // Add Auto label
+          defaultOptions.i18n = {
+            qualityLabel: {
+              0: "Auto",
+              ...hls.levels.reduce((acc, l, i) => {
+                acc[l.height] = `${l.height}p`;
+                return acc;
+              }, {})
+            }
+          };
+
+          // Update Auto label during quality switches
+          hls.on(Hls.Events.LEVEL_SWITCHED, (event, data) => {
+            const span = document.querySelector(".plyr__menu__container [data-plyr='quality'][value='0'] span");
+            if (hls.autoLevelEnabled) {
+              span.innerHTML = `Auto (${hls.levels[data.level].height}p)`;
+            } else {
+              span.innerHTML = "Auto";
+            }
+          });
+
+          // Initialize Plyr
+          new Plyr(video, defaultOptions);
+        });
+
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) {
+            console.error("HLS error:", data);
+            showError("Failed to load stream. Please try again.");
+          }
+        });
+
+        hls.attachMedia(video);
+        window.hls = hls; // Expose for debugging
+      }
+    });
+  </script>
+</body>
+</html>
