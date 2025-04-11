@@ -1,20 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="refresh" content="0; url=http://example.com">
-        <script type="text/javascript">
-            window.location.href = "/link/telegram.html"
-        </script>
-    </head>
-</html>
-
-<!DOCTYPE HTML>
-<html lang="en">
 
 <head>
-
-  <script>  if(confirm("Join Our Telegram Channel @AK_LIVE_Office")) { window.location.href = "/telegram.html" }</script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -87,28 +74,90 @@
 
 
   <center>
+<style>
+      #popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        .popup-content h2 {
+            margin: 0 0 10px;
+            color: #42CDE7;
+        }
+
+        .popup-content p {
+            margin: 0 0 20px;
+        }
+
+        .popup-content button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .popup-content .join-btn {
+            background-color: #007BCB;
+            color: white;
+        }
+
+        .popup-content .close-btn {
+            background-color: #555;
+            color: white;
+        }
+</style>
+
+    <div id="popup">
+        <div class="popup-content">
+            <h2>Support Us!</h2>
+            <p>Join our Telegram channel @AK_LIVE_OFFICE for more updates</p>
+            <button class="join-btn" onclick="window.open('https://telegram.me/AK_LIVE_OFFICE', '_blank')">Join Now</button>
+            <button class="close-btn" onclick="closePopup()">Already Joined</button>
+        </div>
+    </div>
 
 
     <a href="/link/telegram.html"> <button class="btn-11 custom-btn"
         style="width:100%;font-weight:100;height:50px;font-size:23px;position:sticky;top:3px;z-index:3; font-family: 'Oswald', sans-serif">
-        IPL 2024 : AK LIVE </button></a>
+       Welcome to AK LIVE </button></a>
 
     <br><br>
 
 
-    <a href="/IPL24/M1">
+    <a href="/IPL/25">
       <div class="tvv-item"> <img class="loading"
-          src="https://i.ibb.co/Njgy253/tata-ipl-2024.png">
-        <div class="tvv-name">  IPL 2024 - M1
+          src="https://images.seeklogo.com/logo-png/53/1/tata-ipl-logo-png_seeklogo-531750.png">
+        <div class="tvv-name">  IPL 2025 Live
 
         </div>
       </div>
     </a> 
 
-<a href="/IPL24/M2">
+<a href="/fancode">
       <div class="tvv-item"> <img class="loading"
           src="https://i.ibb.co/Njgy253/tata-ipl-2024.png">
-        <div class="tvv-name">  IPL 2024 - M2
+        <div class="tvv-name">  Fancode Live
 
         </div>
       </div>
