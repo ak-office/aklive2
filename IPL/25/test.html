@@ -6,73 +6,58 @@
   <title>Video Player</title>
   <!-- Plyr CSS -->
   <link href="https://cdn.plyr.io/3.7.8/plyr.css" rel="stylesheet">
-        <style>
-            html, body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                background: #000;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            video {
-                width: 100%;
-                height: 100%;
-            }
-
-            :root {
-                --plyr-color-main: #949602;
-            }
-        </style>
   <style>
-            html, body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                height: 100%;
-                background: #000;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-    /* Video description styling */
-    .video-description {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #333;
-    }
-    /* Error message styling */
-    .error-message {
-      color: red;
-      text-align: center;
-      margin-top: 20px;
-      font-size: 18px;
-    }
-    /* Ensure video fills container */
-    #player {
+    html, body {
+      margin: 0;
+      padding: 0;
       width: 100%;
       height: 100%;
+      background: #000;
+      overflow: hidden; /* Prevent scrollbars */
     }
-
-            video {
-                width: 100%;
-                height: 100%;
-            }
-
-            :root {
-                --plyr-color-main: #949602;
-            }
+    video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: contain; /* Ensure video fits without cropping */
+      display: block;
+    }
+    .video-description {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 10; /* Above video but below controls */
+      max-width: 90%;
+      text-align: center;
+    }
+    .error-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ff5555;
+      font-size: 18px;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 20; /* Above all elements */
+      text-align: center;
+      max-width: 90%;
+    }
+    :root {
+      --plyr-color-main: #949602; /* Custom Plyr theme color */
+    }
   </style>
 </head>
 <body>
-  <!-- Container for the player -->
-  <div id="player">
-    <video id="player" controls playsinline></video>
-  </div>
+  <!-- Video element directly in body -->
+  <video id="video-player" controls playsinline></video>
 
   <!-- Hls.js and Plyr JS -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15"></script>
@@ -81,7 +66,7 @@
     // Prompt user to join Telegram channel (non-blocking)
     setTimeout(() => {
       if (confirm("Join our Telegram Channel @AK_LIVE_OFFICE?")) {
-        window.location.href = "https://telegram.me/AK_LIVE_OFFICE";
+        window.location.href = "https://t.me/AK_LIVE_OFFICE";
       }
     }, 1000);
 
@@ -89,7 +74,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     if (!urlParams.has("id")) {
       document.title = "Error: Missing ID";
-      showError("Missing required ID");
+      showError("Missing required ID parameter");
       throw new Error("Missing required parameter");
     }
 
@@ -115,8 +100,12 @@
 
     // Display error message in the UI
     function showError(message) {
-      const container = document.getElementById("player-container");
-      container.innerHTML = `<div class="error-message">${message}</div>`;
+      const existingError = document.querySelector(".error-message");
+      if (existingError) existingError.remove(); // Remove previous errors
+      const errorDiv = document.createElement("div");
+      errorDiv.className = "error-message";
+      errorDiv.textContent = message;
+      document.body.appendChild(errorDiv);
     }
 
     // Update quality selection
@@ -136,8 +125,7 @@
 
     // Set up player
     document.addEventListener("DOMContentLoaded", async () => {
-      const video = document.getElementById("player");
-      const container = document.getElementById("player-container");
+      const video = document.getElementById("video-player");
 
       // Fetch playlist and find stream
       const playlist = await fetchPlaylist();
@@ -160,10 +148,10 @@
       if (stream.subtitles && Array.isArray(stream.subtitles)) {
         stream.subtitles.forEach(sub => {
           const track = document.createElement("track");
-          track.kind = "subtitles";
-          track.src = sub.src;
-          track.label = sub.label;
-          track.srclang = sub.lang;
+          track.kind = sub.kind || "subtitles";
+          track.src = sub.src || sub.file; // Support src or file
+          track.label = sub.label || "Unnamed";
+          track.srclang = sub.lang || sub.srclang || "en";
           if (sub.default) {
             track.default = true;
           }
@@ -176,7 +164,7 @@
         const descElement = document.createElement("div");
         descElement.className = "video-description";
         descElement.textContent = stream.description;
-        container.appendChild(descElement);
+        document.body.appendChild(descElement);
       }
 
       // Default Plyr options
@@ -190,9 +178,11 @@
           "volume",
           "captions",
           "settings",
+          "pip", // Added Picture-in-Picture
           "fullscreen"
         ],
         settings: stream.subtitles?.length > 0 ? ["quality", "captions", "speed", "loop"] : ["quality", "speed", "loop"],
+        captions: { active: stream.subtitles?.length > 0, language: stream.subtitles?.[0]?.lang || stream.subtitles?.[0]?.srclang || "auto" }
       };
 
       if (!Hls.isSupported()) {
@@ -200,7 +190,22 @@
         const sourceElement = document.createElement("source");
         sourceElement.src = stream.url;
         video.appendChild(sourceElement);
-        new Plyr(video, defaultOptions);
+        const player = new Plyr(video, defaultOptions);
+        // Enable PiP manually if supported
+        if (document.pictureInPictureEnabled) {
+          player.on("ready", () => {
+            const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
+            if (pipButton) {
+              pipButton.addEventListener("click", () => {
+                if (!document.pictureInPictureElement) {
+                  video.requestPictureInPicture().catch(err => console.error("PiP error:", err));
+                } else {
+                  document.exitPictureInPicture().catch(err => console.error("Exit PiP error:", err));
+                }
+              });
+            }
+          });
+        }
       } else {
         // Initialize HLS.js with custom header
         const hls = new Hls({
@@ -213,7 +218,7 @@
 
         // Handle manifest parsing
         hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
-          const availableQualities = hls.levels.map(l => l.height);
+          const availableQualities = hls.levels.map(l => l.height).filter(h => h);
           availableQualities.unshift(0); // Add 0 for Auto
 
           // Configure Plyr quality options
@@ -228,8 +233,8 @@
           defaultOptions.i18n = {
             qualityLabel: {
               0: "Auto",
-              ...hls.levels.reduce((acc, l, i) => {
-                acc[l.height] = `${l.height}p`;
+              ...hls.levels.reduce((acc, l) => {
+                if (l.height) acc[l.height] = `${l.height}p`;
                 return acc;
               }, {})
             }
@@ -238,21 +243,38 @@
           // Update Auto label during quality switches
           hls.on(Hls.Events.LEVEL_SWITCHED, (event, data) => {
             const span = document.querySelector(".plyr__menu__container [data-plyr='quality'][value='0'] span");
-            if (hls.autoLevelEnabled) {
-              span.innerHTML = `Auto (${hls.levels[data.level].height}p)`;
-            } else {
-              span.innerHTML = "Auto";
+            if (span) {
+              if (hls.autoLevelEnabled && hls.levels[data.level]?.height) {
+                span.innerHTML = `Auto (${hls.levels[data.level].height}p)`;
+              } else {
+                span.innerHTML = "Auto";
+              }
             }
           });
 
           // Initialize Plyr
-          new Plyr(video, defaultOptions);
+          const player = new Plyr(video, defaultOptions);
+          // Ensure PiP button works
+          if (document.pictureInPictureEnabled) {
+            player.on("ready", () => {
+              const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
+              if (pipButton) {
+                pipButton.addEventListener("click", () => {
+                  if (!document.pictureInPictureElement) {
+                    video.requestPictureInPicture().catch(err => console.error("PiP error:", err));
+                  } else {
+                    document.exitPictureInPicture().catch(err => console.error("Exit PiP error:", err));
+                  }
+                });
+              }
+            });
+          }
         });
 
         hls.on(Hls.Events.ERROR, (event, data) => {
           if (data.fatal) {
             console.error("HLS error:", data);
-            showError("Failed to load stream. Please try again.");
+            showError("Failed to load stream. Please check your connection or try again.");
           }
         });
 
