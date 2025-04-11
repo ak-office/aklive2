@@ -9,12 +9,8 @@
   <style>
     /* Center the player and make it responsive */
     .player-container {
-      max-width: 800px;
-      margin: 20px auto;
+      width: 100%;
       background: #f9f9f9;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     /* Video description styling */
     .video-description {
@@ -32,7 +28,7 @@
     /* Ensure video fills container */
     #player {
       width: 100%;
-      height: auto;
+      height: 100%;
     }
   </style>
 </head>
@@ -57,7 +53,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     if (!urlParams.has("id")) {
       document.title = "Error: Missing ID";
-      showError("Missing required parameter: ID");
+      showError("Missing required ID");
       throw new Error("Missing required parameter");
     }
 
@@ -161,7 +157,6 @@
           "fullscreen"
         ],
         settings: stream.subtitles?.length > 0 ? ["quality", "captions", "speed", "loop"] : ["quality", "speed", "loop"],
-        captions: { active: stream.subtitles?.length > 0, language: stream.subtitles?.[0]?.lang || "auto" }
       };
 
       if (!Hls.isSupported()) {
