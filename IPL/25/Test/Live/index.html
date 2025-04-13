@@ -103,7 +103,7 @@
       // Default stream for missing ID
       const defaultStream = {
         id: "default",
-        title: "Default Video",
+        name: "Stream Not Found",
         url: "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6c6381f65302d5ba27140/main.m3u8",
         poster: "https://i.ibb.co/whW6c24v/aklive-stream-not-found.jpg", // Use empty or set a specific poster URL if needed
         subtitles: [],
@@ -131,7 +131,7 @@
       }
 
       // Set document title and metadata
-      document.title = stream.title || "Video Player";
+      document.title = stream.name || "AK LIVE";
       if (stream.poster) {
         video.setAttribute("poster", stream.poster);
       }
