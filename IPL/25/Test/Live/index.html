@@ -24,20 +24,20 @@
     .plyr {
       width: 100%;
       height: 100%;
-      position: relative;
+      position: relative; /* Added for logo positioning */
     }
     .player-logo {
       position: absolute;
       top: 35px;
       right: 20px;
-      width: 170px;
+      width: 170px; /* Adjust size as needed */
       height: 50px;
-      z-index: 15;
-      opacity: 0.8;
-      pointer-events: none;
+      z-index: 15; /* Above video and controls */
+      opacity: 0.8; /* Slightly transparent */
+      pointer-events: none; /* Prevent interaction */
     }
     :root {
-      --plyr-color-main: #00E4F1;
+      --plyr-color-main: #00E4F1; /* Custom Plyr theme color */
     }
   </style>
 </head>
@@ -76,17 +76,6 @@
     function getStreamId() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("id");
-    }
-
-    // Validate m3u8 URL by attempting to fetch it
-    async function validateM3u8(url) {
-      try {
-        const response = await fetch(url, { method: "HEAD" });
-        return response.ok;
-      } catch (error) {
-        console.error("m3u8 validation error:", error);
-        return false;
-      }
     }
 
     // Update quality selection
@@ -136,7 +125,7 @@
 
       // Default stream for missing ID
       const defaultStream = {
-        id: "",
+        id: "default",
         name: "Stream Not Found",
         url: "https://video.gumlet.io/67f4d498aac3d4fca78db822/67f6c6381f65302d5ba27140/main.m3u8",
         poster: "https://i.ibb.co/whW6c24/aklive-stream-not-found.jpg",
@@ -157,17 +146,11 @@
       // Fetch playlist and find stream
       let stream = defaultStream;
       const streamId = getStreamId();
-
       if (streamId) {
         const playlist = await fetchPlaylist();
-        if (playlist.length > 0) {
-          const foundStream = playlist.find(item => item.id === streamId);
-          if (foundStream) {
-            const isValid = await validateM3u8(foundStream.url);
-            if (isValid) {
-              stream = foundStream;
-            }
-          }
+        const foundStream = playlist.find(item => item.id === streamId);
+        if (foundStream) {
+          stream = foundStream;
         }
       }
 
@@ -208,7 +191,7 @@
         ],
         clickToPlay: true,
         disableContextMenu: false,
-        hideControls: true,
+        hideControls: true, // Ensure controls auto-hide
         resetOnEnd: true,
         iconUrl: "https://cdn.plyr.io/3.7.8/plyr.svg"
       };
