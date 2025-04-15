@@ -16,6 +16,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden; /* Prevent scrollbars */
     }
     .player-container {
       position: relative;
@@ -25,6 +26,7 @@
     video {
       width: 100%;
       height: 100%;
+      display: block; /* Prevent extra spacing */
     }
     .plyr {
       width: 100%;
@@ -40,6 +42,7 @@
       z-index: 1000; /* Above Plyr controls */
       opacity: 0.8;
       pointer-events: none;
+      object-fit: contain; /* Ensure logo scales correctly */
     }
     /* Ensure logo visibility in full-screen */
     .plyr--fullscreen .player-logo {
@@ -70,10 +73,13 @@
       }
     }, 1000);
 
-    // Fetch media playlist from API
+    // Fetch media playlist from API with timeout
     async function fetchPlaylist() {
       try {
-        const response = await fetch("https://pb.oii.im/~aklive");
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+        const response = await fetch("https://pb.oii.im/~aklive", { signal: controller.signal });
+        clearTimeout(timeoutId);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -108,18 +114,16 @@
     // Lock orientation to landscape
     async function lockOrientationToLandscape() {
       try {
-        if (screen.orientation && screen.orientation.lock) {
+        if (screen.orientation && screen.orientation.lock && screen.orientation.type !== "landscape-primary" && screen.orientation.type !== "landscape-secondary") {
           await screen.orientation.lock("landscape");
           console.log("Orientation locked to landscape");
-        } else {
-          console.log("Orientation lock not supported");
         }
       } catch (err) {
         console.error("Failed to lock orientation:", err);
       }
     }
 
-    // Unlock orientation when exiting full-screen
+    // Unlock orientation
     async function unlockOrientation() {
       try {
         if (screen.orientation && screen.orientation.unlock) {
@@ -149,6 +153,7 @@
           "current-time",
           "mute",
           "volume",
+          "captions",
           "settings",
           "pip",
           "fullscreen"
@@ -206,40 +211,24 @@
         hideControls: true,
         resetOnEnd: true,
         iconUrl: "https://cdn.plyr.io/3.7.8/plyr.svg",
-        fullscreen: { enabled: true, fallback: true, allowAudio: false }
+        fullscreen: { enabled: true, fallback: true, allowAudio: false },
+        loadSprite: true // Optimize icon loading
       };
 
+      // Initialize player
+      let player;
       if (!Hls.isSupported()) {
         const sourceElement = document.createElement("source");
         sourceElement.src = stream.url;
         video.appendChild(sourceElement);
-        const player = new Plyr(video, defaultOptions);
-        // Add logo to Plyr wrapper
-        player.on("ready", () => {
-          const plyrWrapper = document.querySelector(".plyr");
-          const logo = document.createElement("img");
-          logo.src = "https://aklive-v2.vercel.app/images/logo.png";
-          logo.alt = "AK LIVE Logo";
-          logo.className = "player-logo";
-          plyrWrapper.appendChild(logo);
-          if (document.pictureInPictureEnabled) {
-            const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
-            if (pipButton) {
-              pipButton.addEventListener("click", () => {
-                if (!document.pictureInPictureElement) {
-                  video.requestPictureInPicture().catch(err => console.error("PiP error:", err));
-                } else {
-                  document.exitPictureInPicture().catch(err => console.error("Exit PiP error:", err));
-                }
-              });
-            }
-          }
-        });
+        player = new Plyr(video, defaultOptions);
       } else {
         const hls = new Hls({
           xhrSetup: (xhr) => {
             xhr.setRequestHeader("x-token-platform", "web");
-          }
+          },
+          maxBufferLength: 30, // Prevent excessive buffering
+          maxMaxBufferLength: 60
         });
 
         hls.loadSource(stream.url);
@@ -276,41 +265,67 @@
             }
           });
 
-          const player = new Plyr(video, defaultOptions);
-          // Add logo to Plyr wrapper
-          player.on("ready", () => {
-            const plyrWrapper = document.querySelector(".plyr");
-            const logo = document.createElement("img");
-            logo.src = "https://aklive-v2.vercel.app/images/logo.png";
-            logo.alt = "AK LIVE Logo";
-            logo.className = "player-logo";
-            plyrWrapper.appendChild(logo);
-            if (document.pictureInPictureEnabled) {
-              const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
-              if (pipButton) {
-                pipButton.addEventListener("click", () => {
-                  if (!document.pictureInPictureElement) {
-                    video.requestPictureInPicture().catch(err => console.error("PiP error:", err));
-                  } else {
-                    document.exitPictureInPicture().catch(err => console.error("Exit PiP error:", err));
-                  }
-                });
-              }
-            }
-          });
+          player = new Plyr(video, defaultOptions);
+        });
+
+        // Handle HLS errors
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          if (data.fatal) {
+            console.error("Fatal HLS error:", data);
+            hls.destroy();
+            video.poster = defaultStream.poster; // Show fallback poster
+          }
         });
 
         hls.attachMedia(video);
         window.hls = hls;
       }
 
-      // Handle orientation locking for full-screen
+      // Add logo to Plyr wrapper
+      player.on("ready", () => {
+        const plyrWrapper = document.querySelector(".plyr");
+        if (plyrWrapper && !plyrWrapper.querySelector(".player-logo")) {
+          const logo = document.createElement("img");
+          logo.src = "https://aklive-v2.vercel.app/images/logo.png";
+          logo.alt = "AK LIVE Logo";
+          logo.className = "player-logo";
+          plyrWrapper.appendChild(logo);
+        }
+
+        // Picture-in-picture setup
+        if (document.pictureInPictureEnabled) {
+          const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
+          if (pipButton) {
+            pipButton.addEventListener("click", async () => {
+              try {
+                if (!document.pictureInPictureElement) {
+                  await video.requestPictureInPicture();
+                } else {
+                  await document.exitPictureInPicture();
+                }
+              } catch (err) {
+                console.error("PiP error:", err);
+              }
+            });
+          }
+        }
+      });
+
+      // Handle orientation for full-screen
       document.addEventListener("fullscreenchange", () => {
         if (!document.fullscreenElement) {
           unlockOrientation();
         } else {
           lockOrientationToLandscape();
         }
+      });
+
+      // Cleanup on page unload
+      window.addEventListener("unload", () => {
+        if (window.hls) {
+          window.hls.destroy();
+        }
+        unlockOrientation();
       });
     });
   </script>
