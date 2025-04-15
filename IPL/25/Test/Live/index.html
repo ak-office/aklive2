@@ -37,14 +37,13 @@
       right: 20px;
       width: 170px;
       height: 50px;
-      z-index: 1000; /* High z-index to stay above Plyr controls */
+      z-index: 1000; /* Above Plyr controls */
       opacity: 0.8;
       pointer-events: none;
     }
-    /* Ensure logo remains visible in full-screen */
-    .plyr:fullscreen .player-logo,
-    video:fullscreen + .player-logo {
-      position: fixed;
+    /* Ensure logo visibility in full-screen */
+    .plyr--fullscreen .player-logo {
+      position: absolute;
       top: 35px;
       right: 20px;
       z-index: 1000;
@@ -55,10 +54,12 @@
   </style>
 </head>
 <body>
-  <!-- Container for video and logo -->
+  <!-- Container for video -->
   <div class="player-container">
-    <video id="video-player" controls playsinline></video>
-    <img src="https://aklive-v2.vercel.app/images/logo.png" alt="AK LIVE Logo" class="player-logo">
+    <video id="video-player" controls playsinline>
+      <!-- Logo inside video element for full-screen inclusion -->
+      <img src="https://aklive-v2.vercel.app/images/logo.png" alt="AK LIVE Logo" class="player-logo">
+    </video>
   </div>
 
   <!-- Hls.js and Plyr JS -->
@@ -207,7 +208,8 @@
         disableContextMenu: false,
         hideControls: true,
         resetOnEnd: true,
-        iconUrl: "https://cdn.plyr.io/3.7.8/plyr.svg"
+        iconUrl: "https://cdn.plyr.io/3.7.8/plyr.svg",
+        fullscreen: { enabled: true, fallback: true, allowAudio: false }
       };
 
       if (!Hls.isSupported()) {
@@ -224,27 +226,6 @@
                   video.requestPictureInPicture().catch(err => console.error("PiP error:", err));
                 } else {
                   document.exitPictureInPicture().catch(err => console.error("Exit PiP error:", err));
-                }
-              });
-            }
-            // Handle full-screen button click
-            const fullscreenButton = document.querySelector(".plyr__control[data-plyr='fullscreen']");
-            if (fullscreenButton) {
-              fullscreenButton.addEventListener("click", async () => {
-                if (!document.fullscreenElement) {
-                  try {
-                    await document.querySelector('.player-container').requestFullscreen();
-                    await lockOrientationToLandscape();
-                  } catch (err) {
-                    console.error("Fullscreen or orientation error:", err);
-                  }
-                } else {
-                  try {
-                    await document.exitFullscreen();
-                    await unlockOrientation();
-                  } catch (err) {
-                    console.error("Exit fullscreen or orientation error:", err);
-                  }
                 }
               });
             }
@@ -304,41 +285,22 @@
                   }
                 });
               }
-              // Handle full-screen button click
-              const fullscreenButton = document.querySelector(".plyr__control[data-plyr='fullscreen']");
-              if (fullscreenButton) {
-                fullscreenButton.addEventListener("click", async () => {
-                  if (!document.fullscreenElement) {
-                    try {
-                      await document.querySelector('.player-container').requestFullscreen();
-                      await lockOrientationToLandscape();
-                    } catch (err) {
-                      console.error("Fullscreen or orientation error:", err);
-                    }
-                  } else {
-                    try {
-                      await document.exitFullscreen();
-                      await unlockOrientation();
-                    } catch (err) {
-                      console.error("Exit fullscreen or orientation error:", err);
-                    }
-                  }
-                });
-              }
             });
           }
-
-          // Handle full-screen change events to unlock orientation when exiting
-          document.addEventListener("fullscreenchange", () => {
-            if (!document.fullscreenElement) {
-              unlockOrientation();
-            }
-          });
         });
 
         hls.attachMedia(video);
         window.hls = hls;
       }
+
+      // Handle orientation locking for full-screen
+      video.addEventListener("fullscreenchange", () => {
+        if (!document.fullscreenElement) {
+          unlockOrientation();
+        } else {
+          lockOrientationToLandscape();
+        }
+      });
     });
   </script>
 </body>
