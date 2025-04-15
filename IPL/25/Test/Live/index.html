@@ -56,10 +56,7 @@
 <body>
   <!-- Container for video -->
   <div class="player-container">
-    <video id="video-player" controls playsinline>
-      <!-- Logo inside video element for full-screen inclusion -->
-      <img src="https://aklive-v2.vercel.app/images/logo.png" alt="AK LIVE Logo" class="player-logo">
-    </video>
+    <video id="video-player" controls playsinline></video>
   </div>
 
   <!-- Hls.js and Plyr JS -->
@@ -217,8 +214,15 @@
         sourceElement.src = stream.url;
         video.appendChild(sourceElement);
         const player = new Plyr(video, defaultOptions);
-        if (document.pictureInPictureEnabled) {
-          player.on("ready", () => {
+        // Add logo to Plyr wrapper
+        player.on("ready", () => {
+          const plyrWrapper = document.querySelector(".plyr");
+          const logo = document.createElement("img");
+          logo.src = "https://aklive-v2.vercel.app/images/logo.png";
+          logo.alt = "AK LIVE Logo";
+          logo.className = "player-logo";
+          plyrWrapper.appendChild(logo);
+          if (document.pictureInPictureEnabled) {
             const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
             if (pipButton) {
               pipButton.addEventListener("click", () => {
@@ -229,8 +233,8 @@
                 }
               });
             }
-          });
-        }
+          }
+        });
       } else {
         const hls = new Hls({
           xhrSetup: (xhr) => {
@@ -273,8 +277,15 @@
           });
 
           const player = new Plyr(video, defaultOptions);
-          if (document.pictureInPictureEnabled) {
-            player.on("ready", () => {
+          // Add logo to Plyr wrapper
+          player.on("ready", () => {
+            const plyrWrapper = document.querySelector(".plyr");
+            const logo = document.createElement("img");
+            logo.src = "https://aklive-v2.vercel.app/images/logo.png";
+            logo.alt = "AK LIVE Logo";
+            logo.className = "player-logo";
+            plyrWrapper.appendChild(logo);
+            if (document.pictureInPictureEnabled) {
               const pipButton = document.querySelector(".plyr__control[data-plyr='pip']");
               if (pipButton) {
                 pipButton.addEventListener("click", () => {
@@ -285,8 +296,8 @@
                   }
                 });
               }
-            });
-          }
+            }
+          });
         });
 
         hls.attachMedia(video);
@@ -294,7 +305,7 @@
       }
 
       // Handle orientation locking for full-screen
-      video.addEventListener("fullscreenchange", () => {
+      document.addEventListener("fullscreenchange", () => {
         if (!document.fullscreenElement) {
           unlockOrientation();
         } else {
