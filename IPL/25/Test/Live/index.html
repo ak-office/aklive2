@@ -17,6 +17,11 @@
       justify-content: center;
       align-items: center;
     }
+    .player-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
     video {
       width: 100%;
       height: 100%;
@@ -24,28 +29,37 @@
     .plyr {
       width: 100%;
       height: 100%;
-      position: relative; /* Added for logo positioning */
+      position: relative;
     }
     .player-logo {
       position: absolute;
       top: 35px;
       right: 20px;
-      width: 170px; /* Adjust size as needed */
+      width: 170px;
       height: 50px;
-      z-index: 15; /* Above video and controls */
-      opacity: 0.8; /* Slightly transparent */
-      pointer-events: none; /* Prevent interaction */
+      z-index: 1000; /* High z-index to stay above Plyr controls */
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    /* Ensure logo remains visible in full-screen */
+    .plyr:fullscreen .player-logo,
+    video:fullscreen + .player-logo {
+      position: fixed;
+      top: 35px;
+      right: 20px;
+      z-index: 1000;
     }
     :root {
-      --plyr-color-main: #00E4F1; /* Custom Plyr theme color */
+      --plyr-color-main: #00E4F1;
     }
   </style>
 </head>
 <body>
-  <!-- Video element directly in body -->
-  <video id="video-player" controls playsinline></video>
-  <!-- Player logo -->
-  <img src="https://aklive-v2.vercel.app/images/logo.png" alt="AK LIVE Logo" class="player-logo">
+  <!-- Container for video and logo -->
+  <div class="player-container">
+    <video id="video-player" controls playsinline></video>
+    <img src="https://aklive-v2.vercel.app/images/logo.png" alt="AK LIVE Logo" class="player-logo">
+  </div>
 
   <!-- Hls.js and Plyr JS -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.15"></script>
@@ -191,7 +205,7 @@
         ],
         clickToPlay: true,
         disableContextMenu: false,
-        hideControls: true, // Ensure controls auto-hide
+        hideControls: true,
         resetOnEnd: true,
         iconUrl: "https://cdn.plyr.io/3.7.8/plyr.svg"
       };
@@ -219,7 +233,7 @@
               fullscreenButton.addEventListener("click", async () => {
                 if (!document.fullscreenElement) {
                   try {
-                    await video.requestFullscreen();
+                    await document.querySelector('.player-container').requestFullscreen();
                     await lockOrientationToLandscape();
                   } catch (err) {
                     console.error("Fullscreen or orientation error:", err);
@@ -296,7 +310,7 @@
                 fullscreenButton.addEventListener("click", async () => {
                   if (!document.fullscreenElement) {
                     try {
-                      await video.requestFullscreen();
+                      await document.querySelector('.player-container').requestFullscreen();
                       await lockOrientationToLandscape();
                     } catch (err) {
                       console.error("Fullscreen or orientation error:", err);
