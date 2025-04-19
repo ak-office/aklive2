@@ -14,7 +14,6 @@ abouttext:"Join Telegram @AK_LIVE_OFFICE",
 aspectratio:"16:9",
 stretching:"exactfit",
 width: "100%",
-controlbar: {background: "rgba(20, 20, 20, 0.95)"},
 autoPause:{viewability:!1},
 autostart: false,
 mute:!1,ph:1,
@@ -33,4 +32,4 @@ pid:"KB5zFt7A",pipIcon:"enabled",playbackRateControls:!0,preload:"metadata",repe
 image: {file:"/images/play-cover.jpg",width: "100%",height: "100%"},
 logo: {file:"/images/play-logo.png",hide:!1, "margin": "30",link:"https://aklive.bio.link",position:"top-right"},
 skin:{controlbar:{iconsActive:"#f2f200",text:"#FFFFFF"},menus:{textActive:"#f2f200"},timeslider:{progress:"#f2f200"}},width:"100%"
-;jwplayer.defaults=jwDefaults;
+};jwplayer.defaults=jwDefaults;
