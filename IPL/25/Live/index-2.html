@@ -66,29 +66,11 @@
             stretching: "uniform",
             width: "100%",
             height: "100%",
+            controlbar: {background: "rgba(20, 20, 20, 0.95)"},
             type: "hls", // Changed to HLS since most URLs are .m3u8
             title: pageTitle,
             description: "Join Telegram @AK_LIVE_OFFICE",
             image: thumbnailUrl
-        });
-
-        // Add custom button when player is ready
-        playerInstance.on('ready', function() {
-            playerInstance.addButton(
-                "/images/icon/stretch.svg",
-                "Change Stretching",
-                function() {
-                    const currentStretching = playerInstance.getConfig().stretching;
-                    const stretchingModes = ["uniform", "exactfit", "fill"];
-                    const nextIndex = (stretchingModes.indexOf(currentStretching) + 1) % stretchingModes.length;
-                    const nextStretching = stretchingModes[nextIndex];
-
-                    playerInstance.setConfig({
-                        stretching: nextStretching
-                    });
-                },
-                "custom-button"
-            );
         });
     }
 
